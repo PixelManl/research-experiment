@@ -38,7 +38,8 @@ Required shared modules when applicable:
 
 ```text
 src/<package>/
-├── process.py       # task main computation orchestration
+├── policy/        # network architectures, actor-critic heads, trust models
+├── runner/        # environment interaction, rollout loops, buffers
 ├── metrics.py       # pure or near-pure metric computation
 ├── diagnostics.py   # debug-only checks, plots, expensive probes
 ├── numerics.py      # safe numerical primitives

@@ -16,8 +16,8 @@
 ```text
 .
 ├── src/<package>/
-│   ├── algorithms/
-│   ├── process.py
+│   ├── policy/
+│   ├── runner/
 │   ├── metrics.py
 │   ├── diagnostics.py
 │   ├── numerics.py
