@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "templates": [
+    {
+      "id": "research-experiment",
+      "type": "spec",
+      "name": "Research Experiment",
+      "description": "Trellis specs for research experiments: task-scoped tests/scripts/outputs, Hydra runtime, provenance, numerics, math mapping, and human-agent collaboration.",
+      "path": "marketplace/specs/research-experiment",
+      "tags": [
+        "research",
+        "experiments",
+        "hydra",
+        "pytorch",
+        "rl",
+        "ml"
+      ]
+    }
+  ]
+}

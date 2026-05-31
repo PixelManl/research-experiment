@@ -1,0 +1,94 @@
+# Directory Layout Contract
+
+## Required shape
+
+```text
+.
+├── src/<package>/
+├── configs/
+├── scripts/
+├── tests/
+├── outputs/
+│   └── <task-slot>/
+│       └── <YYYY-MM-DD>/
+├── data/
+├── docs/
+│   ├── main/
+│   │   └── main.md
+│   └── research-log/
+│       ├── index.md
+│       ├── baselines.md
+│       ├── source-of-truth.md
+│       ├── invalidated-results.md
+│       ├── reviewer-objections.md
+│       ├── decisions/
+│       ├── tasks/
+│       ├── reports/
+│       └── equation-maps/
+└── .trellis/spec/
+```
+
+## Rules
+
+### Source code
+
+`src/<package>/` 只放可复用研究方法，不放一次性实验胶水。
+
+Required shared modules when applicable:
+
+```text
+src/<package>/
+├── process.py       # task main computation orchestration
+├── metrics.py       # pure or near-pure metric computation
+├── diagnostics.py   # debug-only checks, plots, expensive probes
+├── numerics.py      # safe numerical primitives
+├── schema.py        # dataclass / NamedTuple contracts
+├── validate.py      # precondition and invariant checks
+├── plotting.py      # shared figure styles and subplot builders
+└── provenance.py    # git/config/env capture helpers
+```
+
+### Configs
+
+`configs/` is the only official experiment configuration surface.
+
+```text
+configs/
+├── config.yaml
+├── schema.py
+├── task/
+├── experiment/
+├── debug/
+└── hydra/
+```
+
+### Tests, scripts, outputs
+
+Use the same `<task-slot>` everywhere:
+
+```text
+tests/<task-slot>/
+scripts/<task-slot>/
+outputs/<task-slot>/
+docs/research-log/tasks/<task-slot>.md
+```
+
+## Forbidden
+
+- Adding task-specific Python files to repository root.
+- Adding one-off plotting, statistics, or analysis scripts directly under `src/<package>/`.
+- Creating `tmp.py`, `run2.py`, `final_final.py`, `old_impl.py`, or large commented-out blocks.
+- Using conversation memory as the only record of a baseline change or invalid result.
+
+## Required when adding a new task-slot
+
+Create or update:
+
+```text
+tests/<task-slot>/index.md
+scripts/<task-slot>/index.md
+outputs/<task-slot>/index.md
+docs/research-log/tasks/<task-slot>.md
+```
+
+If one of these is unnecessary, write a one-line reason in the nearest parent index.
