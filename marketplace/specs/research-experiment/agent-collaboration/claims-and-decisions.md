@@ -2,6 +2,20 @@
 
 Agents must not protect a failing story. They must help decide whether to continue, pause, stop, or reframe.
 
+## Purpose
+
+This contract keeps scientific claims and stop/continue decisions tied to file-backed evidence. AI may draft analysis and objections, but it must not silently upgrade weak evidence into a claim or make human-owned scientific decisions.
+
+## When to Read
+
+Read this before:
+
+- stating that a method improves, fails, solves, or validates a research claim;
+- comparing against a baseline or metric that may have changed;
+- creating paper-facing reports, figures, or summaries;
+- deciding whether to continue, pause, stop, or reframe a task;
+- invalidating old outputs or citing results after a bug fix.
+
 ## Decision file
 
 Major decisions go under:
@@ -60,3 +74,11 @@ Use cautious levels:
 - “Clearly improves” from one exploratory run.
 - “Probably fine” for baseline correctness.
 - changing scientific conclusion in chat without a decision file.
+
+## Related Specs
+
+- [ownership-tiers.md](./ownership-tiers.md)
+- [reviewer-objections-ledger.md](./reviewer-objections-ledger.md)
+- [failure-evidence-ledger.md](./failure-evidence-ledger.md)
+- [../experiment-modules/evaluation-and-baselines.md](../experiment-modules/evaluation-and-baselines.md)
+- [../guides/research-stop-continue-decision.md](../guides/research-stop-continue-decision.md)

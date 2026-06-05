@@ -2,6 +2,19 @@
 
 Numerical bugs often make training “look like it is learning” while ruining the result. Safe numerical primitives must be centralized.
 
+## Purpose
+
+This contract prevents silent numerical failures from contaminating training, metrics, and claims. Numerical safety should be explicit, tested, and reusable instead of hidden inside ad hoc training code.
+
+## When to Read
+
+Read this before:
+
+- implementing log-prob, entropy, KL, advantage normalization, clipping, masking, or loss code;
+- changing reward, objective, or gradient-carrying tensor operations;
+- debugging NaN, Inf, exploding/vanishing values, or unstable training;
+- adding safe tensor primitives that may be reused across task-slots.
+
 ## Required module
 
 ```text
@@ -87,3 +100,11 @@ If NaN/Inf appears:
 ## Forbidden
 
 - using `torch.nan_to_num` or similar to implicitly hide NaNs without fixing the root cause.
+
+## Related Specs
+
+- [math-formula-mapping.md](./math-formula-mapping.md)
+- [tensor-shapes-typing.md](./tensor-shapes-typing.md)
+- [validation-assertions.md](./validation-assertions.md)
+- [determinism.md](./determinism.md)
+- [../experiment-runtime/provenance.md](../experiment-runtime/provenance.md)

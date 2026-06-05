@@ -2,6 +2,15 @@
 
 Every formal run must state how randomness is controlled.
 
+## When to Read
+
+Read this before:
+
+- adding training, evaluation, data-loading, or rollout entrypoints;
+- launching sweeps, remote runs, or concurrent jobs;
+- comparing baselines or claiming reproducibility;
+- changing worker, environment, DataLoader, or multiprocessing seed behavior.
+
 ## Required config
 
 ```yaml
@@ -30,7 +39,7 @@ def set_global_seed(seed: int, deterministic: bool) -> None:
     torch.cuda.manual_seed_all(seed)
 ```
 
-If deterministic algorithms are enabled, record that in `provenance.json` (详见 `../experiment-runtime/provenance.md`).
+If deterministic algorithms are enabled, record that in `provenance.json` (see `../experiment-runtime/provenance.md`).
 
 ## Worker seeds
 

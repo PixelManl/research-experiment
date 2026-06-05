@@ -2,6 +2,15 @@
 
 The goal is a flat but not messy design.
 
+## When to Read
+
+Read this before:
+
+- deciding where task flow, metrics, diagnostics, artifacts, or reports belong;
+- moving logic out of scripts or `main`;
+- splitting a large `process.py` file;
+- adding debug-only probes or expensive diagnostics.
+
 ## Recommended module roles
 
 ```text

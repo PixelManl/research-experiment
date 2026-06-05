@@ -2,6 +2,15 @@
 
 Hydra is the experiment control plane. Do not grow a 60-argument `argparse` interface.
 
+## When to Read
+
+Read this before:
+
+- adding or changing config groups, runtime parameters, or debug modes;
+- creating a formal experiment entrypoint;
+- adapting legacy argparse interfaces;
+- deciding whether a run should be controlled by config or command-line flags.
+
 ## Required config shape
 
 ```text

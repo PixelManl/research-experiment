@@ -1,6 +1,6 @@
-# Research-Experiment Trellis Spec Template v0.1
+# Research-Experiment Trellis Spec Template v1.1
 
-这是一个面向科研实验项目的 Trellis `.trellis/spec/` 模板。它不是代码脚手架，而是一组让 AI 和人类共同遵守的研究工程规范。
+这是一个面向科研实验项目的 Trellis `.trellis/spec/` 模板。它不是可运行的科研代码项目，也不是默认脚手架生成器，而是一组让 AI 和人类共同遵守的研究工程规范。
 
 ## 安装方式 A：直接复制
 
@@ -20,7 +20,8 @@ marketplace/specs/research-experiment/
 ├── research-code/
 ├── experiment-modules/
 ├── agent-collaboration/
-└── guides/
+├── guides/
+└── examples/          # optional examples, not required spec rules
 ```
 
 ## 安装方式 B：作为 Trellis 自定义 registry
@@ -30,6 +31,19 @@ marketplace/specs/research-experiment/
 ```bash
 trellis init --registry gh:<org>/<repo>/marketplace --template research-experiment
 ```
+
+## 使用方式 C：可选脚手架参考
+
+模板内的 `examples/bootstrap/bootstrap.py` 只是可选参考，用于说明如何按本 spec 生成一个初始科研项目目录。它不属于 Trellis spec 的核心规则；未来如果需要自动化脚手架，应作为独立 skill 设计，而不是混入 spec template 本体。
+
+## v1.1 更新重点
+
+- Clarifies spec-only scope and moves the optional scaffold helper under `examples/bootstrap/`.
+- Adds task-oriented quick navigation for research workflows.
+- Upgrades layer indexes into agent-friendly navigation tables.
+- Defines reusable spec page shapes for contracts, guides, and pitfall pages.
+- Adds `When to Read` / `When to Use` triggers across core spec pages.
+- Cleans relative Markdown links so template-local links resolve.
 
 ## 设计重点
 

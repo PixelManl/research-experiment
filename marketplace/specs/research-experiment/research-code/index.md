@@ -1,20 +1,56 @@
 # Research Code Index
 
-本层规定科研代码本身：清晰、数学可审查、形状可追踪、数值稳定、随机性可复现。
+This layer defines the research code contract: clear implementation, reviewable math, traceable tensor shapes, numerical stability, explicit data schemas, and reproducible randomness.
 
-| Topic | File | Status |
-|---|---|---|
-| Code style | `code-style.md` | Template |
-| Math/formula mapping | `math-formula-mapping.md` | Template |
-| Tensor shapes and typing | `tensor-shapes-typing.md` | Template |
-| Validation/assertions | `validation-assertions.md` | Template |
-| Numerical stability | `numerics.md` | Template |
-| Data schema | `data-schema.md` | Template |
-| Determinism | `determinism.md` | Template |
-| Profiling | `profiling.md` | Template |
+## Documentation Files
 
-## Non-negotiable
+| File | Purpose | When to Read | Priority |
+|---|---|---|---|
+| [code-style.md](./code-style.md) | Simple, readable, direct research code | Writing or refactoring core implementation | Must Read |
+| [math-formula-mapping.md](./math-formula-mapping.md) | Formula-to-code alignment | Translating papers, changing loss/reward/objectives | Must Read |
+| [tensor-shapes-typing.md](./tensor-shapes-typing.md) | Tensor shape, dtype, and data-flow annotations | Adding models, rollout batches, losses, metrics, or adapters | Must Read |
+| [validation-assertions.md](./validation-assertions.md) | Assertions and invariant validation | Adding preconditions, schemas, or boundary checks | Must Read |
+| [numerics.md](./numerics.md) | Safe numerical primitives and NaN/Inf handling | Implementing log-prob, entropy, advantage normalization, or debugging instability | Must Read |
+| [data-schema.md](./data-schema.md) | Dataclass / NamedTuple contracts for research data | Passing transitions, batches, results, or artifacts across modules | Must Read |
+| [determinism.md](./determinism.md) | Global seed and reproducibility control | Adding training entrypoints, baseline comparisons, or concurrent runs | Must Read |
+| [profiling.md](./profiling.md) | Evidence-based performance optimization | Only after profile evidence shows a real bottleneck | Conditional |
 
-- 先写直观正确的 torch 实现；性能优化要有 profile 证据。
-- 公式实现必须能对应到论文/笔记中的公式编号。
-- 跨模块传递数据必须用 dataclass/NamedTuple schema，不用裸 dict。
+## Quick Navigation by Task
+
+Changing math, loss, reward, or objective code?
+
+- Read [math-formula-mapping.md](./math-formula-mapping.md), [tensor-shapes-typing.md](./tensor-shapes-typing.md), and [validation-assertions.md](./validation-assertions.md).
+- Read [numerics.md](./numerics.md) when the change touches loss functions, log-prob, entropy, advantage normalization, clipping, masking, or NaN/Inf risk.
+- Add or update task-scoped tests that check formula behavior, invariants, numerical edge cases, and tensor shapes.
+
+Adding a rollout, transition, batch, or result object?
+
+- Read [data-schema.md](./data-schema.md).
+- Read [tensor-shapes-typing.md](./tensor-shapes-typing.md).
+- Do not pass naked dicts across module boundaries.
+
+Debugging NaN, Inf, or unstable training?
+
+- Read [numerics.md](./numerics.md).
+- Preserve the failed run directory and status.
+- Add or update a numerics regression test before retrying.
+
+Adding validation or assertions?
+
+- Read [validation-assertions.md](./validation-assertions.md).
+- Put compound checks in `validate.py` or explicit validation helpers.
+- Let failures stop the run instead of hiding them behind broad try/catch blocks.
+
+Optimizing performance?
+
+- Read [profiling.md](./profiling.md) and [code-style.md](./code-style.md).
+- Optimize only with profile evidence.
+- Do not replace readable tensor math with tricks unless tests and comments justify it.
+
+## Core Rules Summary
+
+- Start with the most mathematically direct implementation; optimize only with evidence.
+- Formula implementations must map back to paper or note equation identifiers.
+- Cross-module research data must use dataclass or NamedTuple schemas, not naked dicts.
+- Numerical safety belongs in `numerics.py`; do not silently mask NaN/Inf.
+- Tensor shapes and data-flow assumptions must be easy for a human reviewer to inspect.

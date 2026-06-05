@@ -2,6 +2,15 @@
 
 Logging must be configurable, file-backed, and low-overhead by default.
 
+## When to Read
+
+Read this before:
+
+- creating or modifying a run entrypoint;
+- adding progress, diagnostics, warnings, or metric logging;
+- launching concurrent, remote, or non-interactive jobs;
+- redirecting stdout/stderr or replacing ad hoc `print` output.
+
 ## Required
 
 Use Python `logging` or a project logger wrapper. Do not use `print` for experiment progress except in interactive REPL/notebooks.

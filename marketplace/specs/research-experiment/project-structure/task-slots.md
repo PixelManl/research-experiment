@@ -2,6 +2,15 @@
 
 A `<task-slot>` is the stable filesystem identity for one research workstream.
 
+## When to Read
+
+Read this before:
+
+- creating a new research workstream;
+- renaming, pausing, invalidating, or archiving a task-slot;
+- adding aligned tests, scripts, outputs, or task ledgers;
+- deciding whether a failed run needs a new task-slot or belongs to the existing one.
+
 ## Naming
 
 Use short kebab-case:

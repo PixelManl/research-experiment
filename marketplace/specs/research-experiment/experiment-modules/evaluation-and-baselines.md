@@ -2,6 +2,15 @@
 
 Baseline correctness is a scientific dependency. Treat it as a source-of-truth object, not memory.
 
+## When to Read
+
+Read this before:
+
+- adding, changing, validating, or citing a baseline;
+- adding or changing metrics used for comparison;
+- deciding whether old outputs remain comparable;
+- preparing figures, reports, tables, or claims that depend on baseline correctness.
+
 ## Required baseline ledger
 
 ```text

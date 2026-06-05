@@ -1,6 +1,15 @@
 # Ownership Tiers Contract
 
-科研负责人 must remain the scientific owner. AI is a collaborator, implementer, reviewer, and organizer.
+The research lead must remain the scientific owner. AI is a collaborator, implementer, reviewer, and organizer.
+
+## When to Read
+
+Read this before:
+
+- starting or finishing any task;
+- deciding whether AI may execute, draft, or must defer;
+- changing baselines, metrics, outputs, figures, or claims;
+- recording human approvals or pending T2/T3 decisions.
 
 ## T1 — AI may execute after normal review
 

@@ -2,6 +2,15 @@
 
 Reports convert outputs into decisions. They must distinguish observation, hypothesis, evidence, and claim.
 
+## When to Read
+
+Read this before:
+
+- writing task reports, milestone summaries, or paper-facing evidence;
+- turning outputs into observations, hypotheses, decisions, or claims;
+- deciding which runs are usable or excluded;
+- recording human approval for claim-ready results.
+
 ## Required report location
 
 Use:

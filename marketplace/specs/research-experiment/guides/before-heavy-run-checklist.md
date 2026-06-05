@@ -2,6 +2,20 @@
 
 Use this immediately before expensive compute.
 
+## Purpose
+
+This guide prevents expensive runs from amplifying preventable mistakes. Heavy compute should start only after the task path, config, provenance, tests, smoke evidence, baseline validity, objections, and human-owned decisions are checked.
+
+## When to Use
+
+Use this guide before:
+
+- long training runs;
+- large parameter sweeps;
+- remote or multi-machine jobs;
+- paper-facing experiments;
+- any run whose failure would waste significant compute or delay the project.
+
 ## Required evidence
 
 - [ ] `pytest tests/<task-slot> -q` passes.
@@ -30,3 +44,21 @@ If yes, run that first.
 ```text
 Please review this planned heavy run. Check config, task-slot consistency, output/provenance, tests, smoke result, baseline validity, tensor shape risks, numerical risks, and reviewer objections. Do not implement. Return blockers, warnings, and approval status.
 ```
+
+## Exit Criteria
+
+Before launching the run:
+
+- required evidence is checked;
+- blockers from reviewer objections are resolved or explicitly accepted;
+- output/provenance paths are ready;
+- human approval exists for T2/T3 decisions;
+- the smallest cheaper diagnostic has already been considered.
+
+## Related Specs
+
+- [../experiment-runtime/provenance.md](../experiment-runtime/provenance.md)
+- [../experiment-runtime/smoke-dry-run.md](../experiment-runtime/smoke-dry-run.md)
+- [../experiment-runtime/remote-concurrency.md](../experiment-runtime/remote-concurrency.md)
+- [../agent-collaboration/pre-heavy-run-review.md](../agent-collaboration/pre-heavy-run-review.md)
+- [../agent-collaboration/ownership-tiers.md](../agent-collaboration/ownership-tiers.md)

@@ -2,6 +2,15 @@
 
 Remote scripts manage resources; they do not contain experiment logic.
 
+## When to Read
+
+Read this before:
+
+- launching SSH, remote, batch, sweep, or multi-machine jobs;
+- running multiple experiments concurrently;
+- writing remote launch helpers or resource snapshots;
+- deciding how seeds, logs, output paths, and manifests behave under concurrency.
+
 ## Required layout
 
 ```text

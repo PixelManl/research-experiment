@@ -52,10 +52,10 @@
 不是任务清单，是"因此"的推导。>
 
 ### 链接
-- [source-of-truth 相关条目](../research-log/source-of-truth.md)
-- [invalidated-results 检查](../research-log/invalidated-results.md)
-- [相关 outputs](../../outputs/<task-slot>/index.md)
-- [相关 tests](../../tests/<task-slot>/index.md)
+- source-of-truth related entry: `docs/research-log/source-of-truth.md`
+- invalidated-results check: `docs/research-log/invalidated-results.md`
+- related outputs: `outputs/<task-slot>/index.md`
+- related tests: `tests/<task-slot>/index.md`
 ```
 
 ## 核实差异的输出格式

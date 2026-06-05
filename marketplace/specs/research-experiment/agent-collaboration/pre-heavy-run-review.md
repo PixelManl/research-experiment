@@ -2,6 +2,15 @@
 
 One hour of review is cheaper than ten hours of bad compute.
 
+## When to Read
+
+Read this before:
+
+- launching expensive, remote, sweep, or paper-facing runs;
+- spending major compute after code, baseline, metric, or formula changes;
+- asking another agent to review planned heavy compute;
+- deciding whether objections, smoke evidence, and provenance are sufficient.
+
 ## Trigger
 
 Run this review before any job that is expensive in time, GPU, money, or narrative commitment.

@@ -2,6 +2,15 @@
 
 Dead code is a research risk. It lets AI and humans accidentally reuse old baselines, old math, and old stories.
 
+## When to Read
+
+Read this before:
+
+- finishing a task;
+- deleting or keeping old implementations;
+- preserving failed variants, probes, or legacy baselines;
+- reviewing whether temporary files, dead paths, or obsolete args remain.
+
 ## Forbidden patterns
 
 - `*_old.py`, `*_backup.py`, `*_v2.py`, `final_final.py`.

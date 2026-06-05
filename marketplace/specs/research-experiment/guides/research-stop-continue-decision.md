@@ -2,6 +2,15 @@
 
 Use when a project may be failing, looping, or becoming narrative-driven.
 
+## When to Use
+
+Use this guide when:
+
+- evidence is weak, contradictory, or invalidated;
+- compute cost is rising without stronger diagnostic evidence;
+- baseline, metric, formula, or data changes threaten the current story;
+- deciding whether to continue, pause, stop, or reframe a task.
+
 ## Decision question
 
 ```text

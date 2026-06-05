@@ -2,6 +2,15 @@
 
 Scripts are execution surfaces. Core methods belong in `src/<package>/`; scripts call them.
 
+## When to Read
+
+Read this before:
+
+- adding or reorganizing scripts;
+- creating task run, sweep, data-processing, plotting, or inspection entrypoints;
+- adding remote or SSH launch helpers;
+- deciding whether logic belongs in `scripts/` or reusable `src/<package>/` modules.
+
 ## Required layout
 
 ```text

@@ -1,5 +1,14 @@
 # Directory Layout Contract
 
+## When to Read
+
+Read this before:
+
+- initializing or adapting a repository to this spec;
+- adding new top-level directories or root-level files;
+- deciding whether code belongs in `src/<package>/`, `scripts/`, `tests/`, `outputs/`, or `docs/`;
+- reviewing misplaced task-specific glue or generated artifacts.
+
 ## Required shape
 
 ```text
@@ -32,7 +41,7 @@
 
 ### Source code
 
-`src/<package>/` 只放可复用研究方法，不放一次性实验胶水。
+`src/<package>/` contains reusable research methods only, not one-off experiment glue.
 
 Required shared modules when applicable:
 

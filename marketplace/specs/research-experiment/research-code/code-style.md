@@ -1,12 +1,21 @@
 # Research Code Style Contract
 
-科研代码优先级：
+Research code priorities:
 
 1. correct;
 2. inspectable;
 3. reproducible;
 4. reasonably fast;
 5. only then optimized.
+
+## When to Read
+
+Read this before:
+
+- writing or refactoring core research code;
+- deciding whether to split or keep logic inline;
+- adding clever tensor tricks, in-place operations, or performance shortcuts;
+- reviewing whether a task script has become glue-heavy.
 
 ## Simple does not mean sloppy
 

@@ -2,6 +2,15 @@
 
 After fixing a bug, ask: how will this class of bug never happen again?
 
+## When to Read
+
+Read this before:
+
+- closing a bug-fix task;
+- retrying after a failed or invalidated run;
+- deciding whether to add a test, validation rule, checklist item, spec update, or CI gate;
+- seeing the same bug class appear more than once.
+
 ## Required break-loop question
 
 For every bug fix, answer in the task report:

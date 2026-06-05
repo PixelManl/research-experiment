@@ -2,6 +2,15 @@
 
 Use this before starting a new research task.
 
+## When to Use
+
+Use this guide before:
+
+- starting a new task-slot;
+- making a substantial code, config, baseline, metric, or output change;
+- assigning ownership tier for AI/human collaboration;
+- defining minimum tests and canonical commands.
+
 ## 1. Define task-slot
 
 ```text

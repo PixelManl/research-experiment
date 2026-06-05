@@ -2,6 +2,15 @@
 
 Failed experiments are evidence. They should help decide whether to stop, reframe, or debug.
 
+## When to Read
+
+Read this before:
+
+- marking a run failed, invalidated, superseded, or unusable for claims;
+- citing old outputs after a bug, baseline change, formula change, or data change;
+- deciding whether failure is a bug, evidence against the hypothesis, or a stop/reframe signal;
+- updating source-of-truth or invalidated-results records.
+
 ## Required files
 
 ```text

@@ -2,6 +2,19 @@
 
 Every formal run must be auditable without reading chat history.
 
+## Purpose
+
+This contract makes formal runs reproducible, comparable, and invalidatable from files alone. A reader should be able to inspect a run directory and know what code, config, command, environment, and status produced it.
+
+## When to Read
+
+Read this before:
+
+- creating or modifying a formal run entrypoint;
+- launching heavy compute or remote jobs;
+- comparing outputs in a report or figure;
+- deciding whether old outputs remain valid after a code, data, baseline, or formula change.
+
 ## Required files per run
 
 ```text
@@ -22,7 +35,7 @@ At run start:
 
 1. Save the exact command to `command.txt`.
 2. Save composed Hydra config to `.hydra/config.yaml`.
-3. Save git commit hash to `provenance.json` (格式详见 `../project-structure/outputs-organization.md`).
+3. Save git commit hash to `provenance.json` (format details in `../project-structure/outputs-organization.md`).
 4. Save whether the tree is dirty.
 5. Save `git diff --binary` to `git.diff.patch`.
 6. Save Python/package/CUDA/device summary to `environment.txt`.
@@ -79,3 +92,11 @@ When a baseline, formula, reward, or data bug invalidates prior outputs:
 - Only saving terminal output.
 - Only saving a metrics screenshot.
 - Running with dirty code and no patch.
+
+## Related Specs
+
+- [hydra-configuration.md](./hydra-configuration.md)
+- [logging.md](./logging.md)
+- [smoke-dry-run.md](./smoke-dry-run.md)
+- [../project-structure/outputs-organization.md](../project-structure/outputs-organization.md)
+- [../agent-collaboration/pre-heavy-run-review.md](../agent-collaboration/pre-heavy-run-review.md)

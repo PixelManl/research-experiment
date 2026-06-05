@@ -1,6 +1,6 @@
 # Research-Experiment Spec Template
 
-本模板用于科研实验项目，尤其适合 RL/ML/数值实验/论文复现/算法验证场景。它的目标不是让 AI “多写代码”，而是让 AI 在每次动手前都被约束在可追溯、可验证、可清理的人机协作流程里。
+本模板用于科研实验项目，尤其适合 RL/ML/数值实验/论文复现/算法验证场景。它是 Trellis `.trellis/spec/` 规范模板，不是可运行的科研代码项目，也不是默认脚手架生成器。它的目标不是让 AI “多写代码”，而是让 AI 在每次动手前都被约束在可追溯、可验证、可清理的人机协作流程里。
 
 ## 核心原则
 
@@ -72,9 +72,80 @@
 - `agent-collaboration/`：T1/T2/T3 ownership、reviewer objections、失败证据、重计算前检查。
 - `guides/`：实际任务开始前、重计算前、bug 复盘、停止/继续决策、spec 更新的操作清单。
 
+## Quick Navigation by Research Task
+
+Starting or adapting a project?
+
+- Read [project-structure/index.md](./project-structure/index.md).
+- Read [guides/before-dev-checklist.md](./guides/before-dev-checklist.md).
+- Read [agent-collaboration/ownership-tiers.md](./agent-collaboration/ownership-tiers.md).
+
+Starting a new task-slot?
+
+- Read [project-structure/task-slots.md](./project-structure/task-slots.md).
+- Read [project-structure/tests-organization.md](./project-structure/tests-organization.md).
+- Read [project-structure/scripts-organization.md](./project-structure/scripts-organization.md).
+- Read [project-structure/outputs-organization.md](./project-structure/outputs-organization.md).
+- Create or update `docs/research-log/tasks/<task-slot>.md`.
+
+Changing math, loss, reward, or objective code?
+
+- Read [research-code/math-formula-mapping.md](./research-code/math-formula-mapping.md).
+- Read [research-code/tensor-shapes-typing.md](./research-code/tensor-shapes-typing.md).
+- Read [research-code/validation-assertions.md](./research-code/validation-assertions.md).
+- Read [research-code/numerics.md](./research-code/numerics.md).
+- Record unresolved concerns in [agent-collaboration/reviewer-objections-ledger.md](./agent-collaboration/reviewer-objections-ledger.md).
+
+Launching a formal run?
+
+- Read [experiment-runtime/hydra-configuration.md](./experiment-runtime/hydra-configuration.md).
+- Read [experiment-runtime/provenance.md](./experiment-runtime/provenance.md).
+- Read [experiment-runtime/logging.md](./experiment-runtime/logging.md).
+- Read [project-structure/outputs-organization.md](./project-structure/outputs-organization.md).
+
+Before heavy compute?
+
+- Read [experiment-runtime/smoke-dry-run.md](./experiment-runtime/smoke-dry-run.md).
+- Read [guides/before-heavy-run-checklist.md](./guides/before-heavy-run-checklist.md).
+- Read [agent-collaboration/pre-heavy-run-review.md](./agent-collaboration/pre-heavy-run-review.md).
+
+Changing a baseline or metric?
+
+- Read [experiment-modules/evaluation-and-baselines.md](./experiment-modules/evaluation-and-baselines.md).
+- Read [experiment-modules/process-metric-diagnose.md](./experiment-modules/process-metric-diagnose.md).
+- Read [agent-collaboration/claims-and-decisions.md](./agent-collaboration/claims-and-decisions.md).
+
+Creating figures or reports?
+
+- Read [experiment-modules/figures.md](./experiment-modules/figures.md).
+- Read [experiment-modules/reports.md](./experiment-modules/reports.md).
+- Read [agent-collaboration/claims-and-decisions.md](./agent-collaboration/claims-and-decisions.md).
+- Use only valid, source-backed run ids.
+
+Handling failed or invalidated results?
+
+- Read [agent-collaboration/failure-evidence-ledger.md](./agent-collaboration/failure-evidence-ledger.md).
+- Read [agent-collaboration/claims-and-decisions.md](./agent-collaboration/claims-and-decisions.md).
+- Read [guides/research-stop-continue-decision.md](./guides/research-stop-continue-decision.md).
+- Update invalidated results and source-of-truth records.
+
+After fixing a bug?
+
+- Read [guides/bug-root-cause-retrospective.md](./guides/bug-root-cause-retrospective.md).
+- Read [agent-collaboration/break-loop-ci.md](./agent-collaboration/break-loop-ci.md).
+- Add a test, validation rule, checklist item, or spec update when the bug class is preventable.
+
+Updating project conventions?
+
+- Read [guides/spec-update-guide.md](./guides/spec-update-guide.md).
+- Update the smallest relevant spec file.
+- Do not rely on chat memory as the only record.
+
 ## 使用方式
 
-复制本目录内容到 `.trellis/spec/` 后，先让 AI 执行一次项目适配：
+复制本目录内容到 `.trellis/spec/` 后，先做项目适配。Specs are meant to be customized: 不要把本模板当成永远不变的通用规则，而应根据真实仓库删除不适用内容、替换路径占位符、加入项目自己的 Good/Bad examples。
+
+先让 AI 执行一次项目适配：
 
 ```text
 请根据当前仓库，把 .trellis/spec/ 的 Research-Experiment 模板填成项目专属规范：
@@ -84,3 +155,9 @@
 4. 保持每个 index.md 简洁，只链接细则；
 5. 最后列出还需要我人类确认的 T2/T3 决策。
 ```
+
+## 可选脚手架参考
+
+`examples/bootstrap/bootstrap.py` 是可选参考脚本，用来说明如何按本 spec 创建初始目录。它不属于 spec 核心规则，也不应被理解为 Trellis template 必须执行的入口。
+
+如果未来需要自动化脚手架，应该独立设计为 skill：先读取目标仓库，再根据项目真实结构创建 task-slot、tests/scripts/outputs/docs ledger。

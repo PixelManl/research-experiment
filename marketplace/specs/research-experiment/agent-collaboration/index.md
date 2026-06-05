@@ -1,18 +1,54 @@
 # Agent Collaboration Index
 
-本层规定人机协同机制：哪些事情 AI 能做，哪些必须人类拍板，如何避免继续调一个失败故事。
+This layer defines human-agent collaboration: what AI may execute, what it may draft, what humans must decide, and how to avoid continuing a failed research story.
 
-| Topic | File | Status |
-|---|---|---|
-| Ownership tiers | `ownership-tiers.md` | Template |
-| Reviewer objections ledger | `reviewer-objections-ledger.md` | Template |
-| Failure evidence ledger | `failure-evidence-ledger.md` | Template |
-| Pre-heavy-run review | `pre-heavy-run-review.md` | Template |
-| Break-loop and CI | `break-loop-ci.md` | Template |
-| Claims and decisions | `claims-and-decisions.md` | Template |
+## Documentation Files
 
-## Non-negotiable
+| File | Purpose | When to Read | Priority |
+|---|---|---|---|
+| [ownership-tiers.md](./ownership-tiers.md) | T1/T2/T3 ownership boundaries | Starting tasks, classifying AI vs human decisions, finishing work | Must Read |
+| [reviewer-objections-ledger.md](./reviewer-objections-ledger.md) | Objections, uncertainty, and counter-evidence tracking | Reviewing claims, formulas, baselines, or paper-facing results | Must Read |
+| [failure-evidence-ledger.md](./failure-evidence-ledger.md) | Failed runs and invalidated evidence as source-backed records | A run fails, a bug invalidates outputs, or evidence contradicts the story | Must Read |
+| [pre-heavy-run-review.md](./pre-heavy-run-review.md) | Independent review before expensive compute | Before heavy runs, large sweeps, or remote jobs | Must Read |
+| [break-loop-ci.md](./break-loop-ci.md) | Post-bug prevention and minimal CI gates | After fixing bugs or discovering repeated failure modes | Must Read |
+| [claims-and-decisions.md](./claims-and-decisions.md) | Claim strength, stop/continue decisions, and human approvals | Making scientific claims, stopping/reframing, or citing outputs | Must Read |
 
-- Conversation is not source of truth.
-- AI must surface uncertainty and objections, not just preserve a hopeful story.
-- Heavy compute needs independent review before launch.
+## Quick Navigation by Task
+
+Classifying AI vs human responsibility?
+
+- Read [ownership-tiers.md](./ownership-tiers.md).
+- Identify T1 changes AI may execute, T2 drafts requiring human approval, and T3 decisions humans own.
+- Record pending T2/T3 decisions in the task ledger or decision file.
+
+Before heavy compute?
+
+- Read [pre-heavy-run-review.md](./pre-heavy-run-review.md).
+- Ask an independent reviewer to inspect code, math, configs, smoke evidence, and output paths.
+- Do not launch the heavy run until review objections are resolved or explicitly accepted.
+
+When a result fails or becomes invalid?
+
+- Read [failure-evidence-ledger.md](./failure-evidence-ledger.md) and [claims-and-decisions.md](./claims-and-decisions.md).
+- Preserve failed outputs and update invalidation records.
+- State which runs must not support claims.
+
+When AI or human makes a strong claim?
+
+- Read [reviewer-objections-ledger.md](./reviewer-objections-ledger.md) and [claims-and-decisions.md](./claims-and-decisions.md).
+- Require source-backed evidence, counter-evidence, and unresolved objections.
+- Do not let chat memory substitute for files.
+
+After fixing a bug?
+
+- Read [break-loop-ci.md](./break-loop-ci.md).
+- Ask what would prevent this bug class from returning.
+- Add a test, checklist item, spec update, or CI gate when appropriate.
+
+## Core Rules Summary
+
+- Conversation is not source of truth; files are.
+- AI must surface uncertainty, objections, and stop/reframe signals instead of preserving a hopeful story.
+- Heavy compute requires independent review before launch.
+- AI may draft T2 scientific content but must not finalize T3 scientific decisions.
+- Failed or invalidated results must become evidence, not hidden history.

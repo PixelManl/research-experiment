@@ -2,6 +2,15 @@
 
 Tensor shape bugs are scientific bugs. Every important tensor flow must be auditable.
 
+## When to Read
+
+Read this before:
+
+- adding models, rollout batches, losses, metrics, or adapters;
+- changing time/batch/action dimensions;
+- using `view`, `reshape`, `squeeze`, masking, broadcasting, or gather/scatter operations;
+- reviewing whether tensor shape assumptions are human-auditable.
+
 ## Required shape comment
 
 For nontrivial tensor transformations:
@@ -17,7 +26,7 @@ logp = logp_all.gather(-1, actions.unsqueeze(-1)).squeeze(-1)
 
 ## Data schema annotations
 
-In `src/<package>/schema.py`, define shapes in comments/docstrings (详见 `data-schema.md`):
+In `src/<package>/schema.py`, define shapes in comments/docstrings (see `data-schema.md`):
 
 ```python
 @dataclass(frozen=True)

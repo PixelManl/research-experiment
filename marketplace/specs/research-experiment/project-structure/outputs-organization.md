@@ -2,6 +2,15 @@
 
 Outputs must be traceable, indexable, and invalidatable. The goal is not to keep every artifact forever; the goal is to know what each artifact means.
 
+## When to Read
+
+Read this before:
+
+- creating a formal run output directory;
+- writing metrics, figures, diagnostics, artifacts, or processed data;
+- marking runs valid, failed, invalidated, superseded, or claim-ready;
+- comparing, citing, cleaning, or archiving outputs.
+
 ## Path convention
 
 Use:

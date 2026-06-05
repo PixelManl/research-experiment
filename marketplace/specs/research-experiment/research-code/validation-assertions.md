@@ -1,6 +1,15 @@
 # Validation and Assertions Contract
 
-科研代码应该 fail fast。不要用 try-catch 把错误变成“看起来能跑”。
+Research code should fail fast. Do not use try/catch to turn errors into runs that merely appear to work.
+
+## When to Read
+
+Read this before:
+
+- adding config, schema, tensor, or environment validation;
+- deciding whether an error should crash or be handled;
+- writing pre-heavy-run checks or invariants;
+- moving nested defensive logic out of `main` and into validation helpers.
 
 ## Required module
 

@@ -2,6 +2,19 @@
 
 Mathematical modeling is a human-review surface. The implementation must make formula alignment obvious.
 
+## Purpose
+
+This contract makes paper-derived or note-derived math auditable by humans. A reviewer should be able to map each nontrivial formula to an implementation path, tensor shape assumptions, and tests without relying on chat history.
+
+## When to Read
+
+Read this before:
+
+- translating a paper, note, or derivation into code;
+- changing loss, reward, objective, estimator, update rule, or metric math;
+- claiming that an implementation matches an equation;
+- documenting unresolved mathematical risk or reviewer objections.
+
 ## Required for paper-derived code
 
 Create or update:
@@ -20,7 +33,7 @@ Format:
 
 ## Code comment format
 
-(Shape annotation format 详见 `tensor-shapes-typing.md`)
+(For shape annotation format, see `tensor-shapes-typing.md`.)
 
 Near the implementation:
 
@@ -71,3 +84,11 @@ Example:
 - Implementing a derived formula without shape comments.
 - Changing a formula and only mentioning it in chat.
 - Upgrading a hypothesis to a claim without tests/evidence.
+
+## Related Specs
+
+- [tensor-shapes-typing.md](./tensor-shapes-typing.md)
+- [validation-assertions.md](./validation-assertions.md)
+- [numerics.md](./numerics.md)
+- [../agent-collaboration/reviewer-objections-ledger.md](../agent-collaboration/reviewer-objections-ledger.md)
+- [../agent-collaboration/claims-and-decisions.md](../agent-collaboration/claims-and-decisions.md)

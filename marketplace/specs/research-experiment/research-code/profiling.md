@@ -2,6 +2,15 @@
 
 Do not optimize prematurely. Start with readable code, then profile if needed.
 
+## When to Read
+
+Read this before:
+
+- optimizing runtime, memory, tensor allocation, or IO;
+- replacing readable code with clever or fused implementations;
+- approving performance work after correctness is established;
+- deciding whether a slowdown is worth changing scientific code.
+
 ## Optimization trigger
 
 Only optimize when one of these is true:

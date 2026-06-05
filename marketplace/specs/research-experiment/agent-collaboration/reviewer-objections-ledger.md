@@ -2,6 +2,15 @@
 
 Agents tend to over-claim. The objection ledger forces them to preserve counterarguments.
 
+## When to Read
+
+Read this before:
+
+- translating uncertain math or assumptions into code;
+- making, revising, or weakening a scientific claim;
+- changing baselines, metrics, or interpretation after pushback;
+- launching sweeps when a cheaper diagnostic could test an objection.
+
 ## Required file
 
 ```text

@@ -2,6 +2,15 @@
 
 Do not pass naked dicts between modules. Data contracts must be explicit.
 
+## When to Read
+
+Read this before:
+
+- adding `Transition`, `RolloutBatch`, `RunResult`, artifact, or metric-result objects;
+- passing research data across module boundaries;
+- adapting external library outputs into internal code;
+- replacing dict-based data flow with typed contracts.
+
 ## Required module
 
 ```text

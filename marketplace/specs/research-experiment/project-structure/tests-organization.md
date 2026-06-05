@@ -1,6 +1,15 @@
 # Tests Organization Contract
 
-科研测试的目标是防止数学、形状、边界、梯度方向和奖励轨迹悄悄错掉；不是把所有实验都变成 144 个不可维护的测试。
+Research tests exist to catch math, shape, boundary, gradient-direction, and trajectory-reward errors before they contaminate experiments. They are not meant to grow into an unmaintainable pile of heavyweight training tests.
+
+## When to Read
+
+Read this before:
+
+- adding tests for a task-slot;
+- changing reward, rollout, loss, tensor shape, gradient, or smoke-path behavior;
+- deleting, disabling, consolidating, or promoting tests;
+- deciding whether a test belongs in `tests/<task-slot>/` or `tests/common/`.
 
 ## Required layout
 

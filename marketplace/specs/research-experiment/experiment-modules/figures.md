@@ -2,6 +2,15 @@
 
 Figures are scientific artifacts. Plotting should be reproducible, not manual.
 
+## When to Read
+
+Read this before:
+
+- writing or modifying plotting scripts;
+- creating exploratory, report, or paper-facing figures;
+- moving figures into `paper/figures/`;
+- deciding whether a figure is reproducible from valid source runs or manifests.
+
 ## Required shared module
 
 ```text
