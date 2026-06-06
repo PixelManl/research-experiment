@@ -44,13 +44,15 @@ trellis init --registry gh:<org>/<repo>/marketplace --template research-experime
 ```text
 marketplace/
 ├── specs/      # Trellis spec templates copied into .trellis/spec/
-└── skills/     # Optional Agent Skills loaded separately from specs
+├── skills/     # Optional Agent Skills loaded separately from specs
+└── agents/     # Optional focused sub-agent definitions
 ```
 
 当前包含：
 
 - `specs/research-experiment`：Research-Experiment Trellis spec template。
 - `skills/scaffolder`：可选 Agent Skill，只负责 audit / dry-run / apply 一个保守的项目文件骨架或 task-slot 文件骨架。
+- `agents/logic-chain-checker.md`：只读 agent，专门检查核心逻辑变化后的下游逻辑耦合失配。
 
 ## v1.1 更新重点
 
