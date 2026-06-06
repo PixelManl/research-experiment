@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scaffolder"
+  short_description: "Create Research-Experiment filesystem skeletons"
+  default_prompt: "Use $scaffolder to audit or unfold a task-scoped filesystem scaffold."

@@ -5,8 +5,8 @@
       "id": "research-experiment",
       "type": "spec",
       "name": "Research Experiment",
-      "description": "Trellis specs for research experiments: task-scoped tests/scripts/outputs, Hydra runtime, provenance, numerics, math mapping, and human-agent collaboration.",
-      "path": "marketplace/specs/research-experiment",
+      "description": "Trellis specs for research experiments: task-scoped tests/scripts/outputs, Hydra runtime, provenance, numerics, math mapping, research pitfalls, and human-agent collaboration.",
+      "path": "specs/research-experiment",
       "tags": [
         "research",
         "experiments",
@@ -14,6 +14,20 @@
         "pytorch",
         "rl",
         "ml"
+      ]
+    },
+    {
+      "id": "research-experiment-scaffolder",
+      "type": "skill",
+      "name": "Research Experiment Scaffolder",
+      "description": "Optional Agent Skill for auditing or creating conservative Research-Experiment filesystem skeletons and task-slot scaffolds with dry-run/apply safety.",
+      "path": "skills/scaffolder",
+      "tags": [
+        "research",
+        "scaffold",
+        "task-slot",
+        "agent-skill",
+        "dry-run"
       ]
     }
   ]

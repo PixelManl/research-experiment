@@ -19,6 +19,7 @@ marketplace/specs/research-experiment/
 ├── experiment-runtime/
 ├── research-code/
 ├── experiment-modules/
+├── research-pitfalls/
 ├── agent-collaboration/
 ├── guides/
 └── examples/          # optional examples, not required spec rules
@@ -35,6 +36,21 @@ trellis init --registry gh:<org>/<repo>/marketplace --template research-experime
 ## 使用方式 C：可选脚手架参考
 
 模板内的 `examples/bootstrap/bootstrap.py` 只是可选参考，用于说明如何按本 spec 生成一个初始科研项目目录。它不属于 Trellis spec 的核心规则；未来如果需要自动化脚手架，应作为独立 skill 设计，而不是混入 spec template 本体。
+
+## Marketplace contents
+
+本仓库的 `marketplace/` 目录是 Trellis marketplace 内容根，遵循官方风格：
+
+```text
+marketplace/
+├── specs/      # Trellis spec templates copied into .trellis/spec/
+└── skills/     # Optional Agent Skills loaded separately from specs
+```
+
+当前包含：
+
+- `specs/research-experiment`：Research-Experiment Trellis spec template。
+- `skills/scaffolder`：可选 Agent Skill，只负责 audit / dry-run / apply 一个保守的项目文件骨架或 task-slot 文件骨架。
 
 ## v1.1 更新重点
 

@@ -168,6 +168,10 @@ Updating project conventions?
 
 This layer captures recurring failure modes and turns them into review gates, regression tests, and checklist updates. Start with [research-pitfalls/index.md](./research-pitfalls/index.md) when a change is locally correct but may shift downstream meaning.
 
+## On-demand scaffold rule
+
+Create filesystem scaffolding only when a task needs a persistent filesystem identity. Read-only inspections, audits, and other validation-only tasks should stay read-only and should not create extra directories, ledgers, or planning files.
+
 ## 可选脚手架参考
 
 `examples/bootstrap/bootstrap.py` 是可选参考脚本，用来说明如何按本 spec 创建初始目录。它不属于 spec 核心规则，也不应被理解为 Trellis template 必须执行的入口。
