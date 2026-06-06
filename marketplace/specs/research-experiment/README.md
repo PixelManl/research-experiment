@@ -69,6 +69,7 @@
 - `experiment-runtime/`：Hydra、运行溯源、smoke/dry run、日志、远程并发。
 - `research-code/`：代码风格、数学映射、张量形状、validate/assert、numerics、schema、随机性。
 - `experiment-modules/`：process/metrics/diagnostics 拆分、评估、绘图、报告。
+- `research-pitfalls/`：高频失配、失效模式、反复踩坑点，以及对应的 CI 触发规则。
 - `agent-collaboration/`：T1/T2/T3 ownership、reviewer objections、失败证据、重计算前检查。
 - `guides/`：实际任务开始前、重计算前、bug 复盘、停止/继续决策、spec 更新的操作清单。
 
@@ -115,6 +116,13 @@ Changing a baseline or metric?
 - Read [experiment-modules/process-metric-diagnose.md](./experiment-modules/process-metric-diagnose.md).
 - Read [agent-collaboration/claims-and-decisions.md](./agent-collaboration/claims-and-decisions.md).
 
+Changing a core mechanism that may affect downstream logic?
+
+- Read [research-pitfalls/coupled-logic-drift.md](./research-pitfalls/coupled-logic-drift.md).
+- Read [research-code/math-formula-mapping.md](./research-code/math-formula-mapping.md).
+- Read [research-code/validation-assertions.md](./research-code/validation-assertions.md).
+- Trace dependent objectives, entropy terms, metrics, diagnostics, baselines, and reports before accepting the change.
+
 Creating figures or reports?
 
 - Read [experiment-modules/figures.md](./experiment-modules/figures.md).
@@ -155,6 +163,10 @@ Updating project conventions?
 4. 保持每个 index.md 简洁，只链接细则；
 5. 最后列出还需要我人类确认的 T2/T3 决策。
 ```
+
+## Pitfall / CI layer
+
+This layer captures recurring failure modes and turns them into review gates, regression tests, and checklist updates. Start with [research-pitfalls/index.md](./research-pitfalls/index.md) when a change is locally correct but may shift downstream meaning.
 
 ## 可选脚手架参考
 

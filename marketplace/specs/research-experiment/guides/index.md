@@ -15,6 +15,11 @@ Guides are operational checklists, not deep code contracts. Keep them short, exe
 
 ## Quick Navigation by Task
 
+When a change may be locally correct but globally inconsistent?
+
+- Read [../research-pitfalls/coupled-logic-drift.md](../research-pitfalls/coupled-logic-drift.md).
+- Trace dependent objectives, entropy terms, metrics, diagnostics, baselines, and reports before accepting the change.
+
 Before starting development?
 
 - Read [before-dev-checklist.md](./before-dev-checklist.md).
