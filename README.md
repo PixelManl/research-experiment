@@ -33,6 +33,8 @@ marketplace/specs/research-experiment/
 trellis init --registry gh:<org>/<repo>/marketplace --template research-experiment
 ```
 
+本仓库的 `marketplace/index.json` 位于仓库根目录下的 `marketplace/` 子目录中。Trellis template `path` 按 Git 仓库根目录解析，因此 registry 条目使用 `marketplace/specs/research-experiment`，而不是 `specs/research-experiment`。
+
 ## 使用方式 C：可选脚手架参考
 
 模板内的 `examples/bootstrap/bootstrap.py` 只是可选参考，用于说明如何按本 spec 生成一个初始科研项目目录。它不属于 Trellis spec 的核心规则；未来如果需要自动化脚手架，应作为独立 skill 设计，而不是混入 spec template 本体。
@@ -50,9 +52,9 @@ marketplace/
 
 当前包含：
 
-- `specs/research-experiment`：Research-Experiment Trellis spec template。
-- `skills/scaffolder`：可选 Agent Skill，只负责 audit / dry-run / apply 一个保守的项目文件骨架或 task-slot 文件骨架。
-- `agents/logic-chain-checker.md`：只读 agent，专门检查核心逻辑变化后的下游逻辑耦合失配。
+- `marketplace/specs/research-experiment`：Research-Experiment Trellis spec template。
+- `marketplace/skills/scaffolder`：可选 Agent Skill，只负责 audit / dry-run / apply 一个保守的项目文件骨架或 task-slot 文件骨架。
+- `marketplace/agents/logic-chain-checker.md`：只读 agent，专门检查核心逻辑变化后的下游逻辑耦合失配。
 
 ## v1.21 更新重点
 

@@ -6,7 +6,7 @@
       "type": "spec",
       "name": "Research Experiment",
       "description": "Trellis specs for research experiments: task-scoped tests/scripts/outputs, Hydra runtime, provenance, numerics, math mapping, research pitfalls, and human-agent collaboration.",
-      "path": "specs/research-experiment",
+      "path": "marketplace/specs/research-experiment",
       "tags": [
         "research",
         "experiments",
@@ -21,7 +21,7 @@
       "type": "skill",
       "name": "Research Experiment Scaffolder",
       "description": "Optional Agent Skill for auditing or creating conservative Research-Experiment filesystem skeletons and task-slot scaffolds with dry-run/apply safety.",
-      "path": "skills/scaffolder",
+      "path": "marketplace/skills/scaffolder",
       "tags": [
         "research",
         "scaffold",
@@ -35,7 +35,7 @@
       "type": "agent",
       "name": "Logic Chain Checker",
       "description": "Read-only agent for checking coupled logic drift after core research logic changes, especially RL/ML action, objective, entropy, metric, baseline, report, and claim coupling.",
-      "path": "agents/logic-chain-checker.md",
+      "path": "marketplace/agents/logic-chain-checker.md",
       "tags": [
         "research",
         "agent",
