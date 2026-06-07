@@ -61,7 +61,8 @@ Each `scripts/<task-slot>/index.md` must define:
 - loads Hydra config;
 - sets up logging/provenance/seed;
 - validates config and environment;
-- calls `src/<package>/process.py`;
+- orchestrates reusable `src/<package>/` functions;
+- calls `src/<package>/process.py` only for named processing helpers used by metrics, diagnostics, figures, or reports;
 - writes summary.
 
 `process_data.py`:
@@ -86,5 +87,7 @@ Each `scripts/<task-slot>/index.md` must define:
 
 - New root-level scripts such as `run_exp.py`, `plot_final.py`, `quick_test.py`.
 - Duplicating core computation inside scripts.
+- Moving the execution entrypoint into `src/<package>/process.py`.
+- Adding Hydra or argparse entrypoints to `src/<package>/process.py`.
 - Accumulating argparse options in scripts; use Hydra config instead.
 - Writing two-line ad hoc metric outputs to terminal instead of structured output files.

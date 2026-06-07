@@ -49,6 +49,7 @@ Required shared modules when applicable:
 src/<package>/
 ├── policy/        # network architectures, actor-critic heads, trust models
 ├── runner/        # environment interaction, rollout loops, buffers
+├── process.py       # reusable heavy processing for metrics/diagnostics; not an entrypoint
 ├── metrics.py       # pure or near-pure metric computation
 ├── diagnostics.py   # debug-only checks, plots, expensive probes
 ├── numerics.py      # safe numerical primitives
@@ -87,6 +88,7 @@ docs/research-log/tasks/<task-slot>.md
 
 - Adding task-specific Python files to repository root.
 - Adding one-off plotting, statistics, or analysis scripts directly under `src/<package>/`.
+- Using `src/<package>/process.py` as a run entrypoint or hiding Hydra/argparse/output-directory ownership there.
 - Creating `tmp.py`, `run2.py`, `final_final.py`, `old_impl.py`, or large commented-out blocks.
 - Using conversation memory as the only record of a baseline change or invalid result.
 

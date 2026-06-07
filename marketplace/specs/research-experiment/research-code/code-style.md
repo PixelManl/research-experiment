@@ -68,11 +68,13 @@ Bad extraction:
 setup_run()
 set_global_seed(cfg.run.seed, cfg.determinism.enabled)
 validate_config()
-result = process.run(cfg)
-write_summary(result)
+result = run_experiment(cfg)
+metric_inputs = process.build_metric_inputs(result, cfg)
+metric_values = metrics.compute_metrics(metric_inputs, cfg.metrics)
+write_summary(metric_values)
 ```
 
-No metrics, plotting, and ad hoc diagnostics in `main`.
+No metric formulas, plotting details, and ad hoc diagnostics in `main`. `process.py` may be called for named preparation helpers, but it must not be the run entrypoint.
 
 ## Forbidden
 

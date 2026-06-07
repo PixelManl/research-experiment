@@ -72,7 +72,7 @@ Only at the top-level boundary to write `status.json`, then re-raise.
 
 ```python
 try:
-    result = process.run(cfg)
+    result = run_experiment(cfg)
 except Exception as exc:
     write_failure_status(output_dir, exc)
     raise

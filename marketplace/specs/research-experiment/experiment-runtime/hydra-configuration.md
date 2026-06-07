@@ -76,6 +76,8 @@ def main(cfg: DictConfig) -> None:
     run(cfg)
 ```
 
+This `run(cfg)` belongs to the script entrypoint layer. Do not implement it as `src/<package>/process.py::run`; `process.py` is for reusable processing helpers used by metrics, diagnostics, figures, or reports.
+
 When the project has a robust structured config, type `cfg` as the dataclass root instead of generic `DictConfig`.
 
 ## Legacy argparse compatibility

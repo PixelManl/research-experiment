@@ -7,7 +7,7 @@ Smoke tests prevent wasting 10 hours on a bug that would appear in 30 seconds.
 Read this before:
 
 - adding or changing a run script;
-- modifying the main process, data path, config path, or output path;
+- modifying the main task flow, data path, config path, or output path;
 - launching any run that may consume substantial GPU/CPU time;
 - deciding whether a planned run has enough cheap evidence to proceed.
 
