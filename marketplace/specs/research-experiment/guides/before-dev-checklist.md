@@ -48,6 +48,12 @@ Check or create:
 
 ## 5. Define canonical commands
 
+Interpreter:
+
+```bash
+python -c "import sys; print(sys.executable)"
+```
+
 Smoke:
 
 ```bash

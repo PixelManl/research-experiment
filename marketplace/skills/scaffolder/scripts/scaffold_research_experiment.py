@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 from __future__ import annotations
 
 import argparse
@@ -184,7 +184,7 @@ def base_project_files(package: str, task_slot: str) -> list[PlannedFile]:
 
 def task_slot_files(task_slot: str, package: str | None, entrypoint: str | None, test_command: str | None) -> list[PlannedFile]:
     validate_task_slot(task_slot)
-    entry = entrypoint or (f"PYTHONPATH=src python -m {package}.main debug=smoke" if package else "TBD")
+    entry = entrypoint or (f"python -m {package}.main debug=smoke" if package else "TBD")
     tests = test_command or f"python -m pytest tests/{task_slot} -q"
     return [
         PlannedFile(Path(f"configs/task/{task_slot}.yaml"), f"slot: {task_slot}\n"),

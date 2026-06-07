@@ -23,6 +23,8 @@ Create or audit a Research-Experiment filesystem scaffold.
 ## Commands
 
 Run from this skill directory, or replace `scripts/...` with the installed skill path.
+Use the verified project interpreter. On Windows, prefer `python` from the active
+Conda/venv; do not substitute `python3` unless it has been checked.
 
 ```bash
 python scripts/scaffold_research_experiment.py audit --root <target-repo>

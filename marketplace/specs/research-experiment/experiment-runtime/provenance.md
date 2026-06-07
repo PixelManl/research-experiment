@@ -38,7 +38,7 @@ At run start:
 3. Save git commit hash to `provenance.json` (format details in `../project-structure/outputs-organization.md`).
 4. Save whether the tree is dirty.
 5. Save `git diff --binary` to `git.diff.patch`.
-6. Save Python/package/CUDA/device summary to `environment.txt`.
+6. Save Python/package/CUDA/device summary to `environment.txt`, including `sys.executable`.
 7. Save seed and deterministic flags.
 8. Save task-slot and run name.
 
@@ -92,10 +92,12 @@ When a baseline, formula, reward, or data bug invalidates prior outputs:
 - Only saving terminal output.
 - Only saving a metrics screenshot.
 - Running with dirty code and no patch.
+- Reconstructing a command with a different Python executable than the one used for the run.
 
 ## Related Specs
 
 - [hydra-configuration.md](./hydra-configuration.md)
+- [python-command.md](./python-command.md)
 - [logging.md](./logging.md)
 - [smoke-dry-run.md](./smoke-dry-run.md)
 - [../project-structure/outputs-organization.md](../project-structure/outputs-organization.md)

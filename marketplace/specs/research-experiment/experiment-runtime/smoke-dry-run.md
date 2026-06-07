@@ -19,6 +19,11 @@ Every task-slot must provide:
 python scripts/<task-slot>/run.py debug=smoke
 ```
 
+Use the verified project interpreter from
+[python-command.md](./python-command.md). On Windows, do not replace this with
+`python3` unless `python3` has been checked and is the active project
+interpreter.
+
 The smoke run must:
 
 - finish in seconds or a few minutes;

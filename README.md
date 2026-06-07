@@ -1,4 +1,4 @@
-# Research-Experiment Trellis Spec Template v1.1
+# Research-Experiment Trellis Spec Template v1.21
 
 这是一个面向科研实验项目的 Trellis `.trellis/spec/` 模板。它不是可运行的科研代码项目，也不是默认脚手架生成器，而是一组让 AI 和人类共同遵守的研究工程规范。
 
@@ -54,13 +54,14 @@ marketplace/
 - `skills/scaffolder`：可选 Agent Skill，只负责 audit / dry-run / apply 一个保守的项目文件骨架或 task-slot 文件骨架。
 - `agents/logic-chain-checker.md`：只读 agent，专门检查核心逻辑变化后的下游逻辑耦合失配。
 
-## v1.1 更新重点
+## v1.21 更新重点
 
 - Clarifies spec-only scope and moves the optional scaffold helper under `examples/bootstrap/`.
 - Adds task-oriented quick navigation for research workflows.
 - Upgrades layer indexes into agent-friendly navigation tables.
 - Defines reusable spec page shapes for contracts, guides, and pitfall pages.
 - Adds `When to Read` / `When to Use` triggers across core spec pages.
+- Adds a cross-platform Python command contract so agents do not silently swap `python` and `python3`.
 - Cleans relative Markdown links so template-local links resolve.
 
 ## 设计重点
