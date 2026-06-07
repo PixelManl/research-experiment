@@ -62,12 +62,13 @@ Each `scripts/<task-slot>/index.md` must define:
 - sets up logging/provenance/seed;
 - validates config and environment;
 - orchestrates reusable `src/<package>/` functions;
-- calls `src/<package>/process.py` only for named processing helpers used by metrics, diagnostics, figures, or reports;
-- writes summary.
+- calls `src/<package>/process.py` for named data preprocessing or composite metrics/diagnostics/status helpers;
+- writes metrics, diagnostics, artifacts, status, and summary returned by reusable modules.
 
 `process_data.py`:
 
 - transforms raw data into a versioned processed dataset;
+- may call reusable preprocessing helpers from `src/<package>/process.py`;
 - writes `manifest.json` with input hashes and config;
 - never silently overwrites processed data.
 
@@ -89,5 +90,6 @@ Each `scripts/<task-slot>/index.md` must define:
 - Duplicating core computation inside scripts.
 - Moving the execution entrypoint into `src/<package>/process.py`.
 - Adding Hydra or argparse entrypoints to `src/<package>/process.py`.
+- Putting complex metric or diagnostic computation in algorithm/runtime modules instead of `metrics.py`, `diagnostics.py`, or `process.py`.
 - Accumulating argparse options in scripts; use Hydra config instead.
 - Writing two-line ad hoc metric outputs to terminal instead of structured output files.

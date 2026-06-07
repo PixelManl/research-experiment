@@ -17,14 +17,15 @@ Writing a task run or processing layer?
 
 - Read [process-metric-diagnose.md](./process-metric-diagnose.md).
 - Keep `scripts/<task-slot>/run.py` responsible for config, logging, provenance, seeding, validation, and top-level orchestration.
-- Keep `src/<package>/process.py` as reusable processing helpers for metrics, diagnostics, figures, and reports; it is not an execution entrypoint.
+- Keep algorithm/runtime modules focused on algorithm mechanics, not complex metric, diagnostic, or report aggregation.
+- Keep `src/<package>/process.py` as reusable data preprocessing and composite result assembly for metrics, diagnostics, figures, reports, and status decisions; it is not an execution entrypoint.
 - Put core training/evaluation logic in reusable `src/<package>/` modules such as runner, policy, loss, objective, or environment adapters.
 
 Adding or changing metrics?
 
 - Read [process-metric-diagnose.md](./process-metric-diagnose.md) and [evaluation-and-baselines.md](./evaluation-and-baselines.md).
 - Keep metric functions pure or near-pure.
-- Put expensive metric input preparation in `process.py` when it would otherwise bloat the script or hide the metric formula.
+- Put data preprocessing or composite metric/diagnostic/status assembly in `process.py` when it would otherwise bloat the script, algorithm, or metric formula.
 - Record metric definition changes before comparing old and new outputs.
 
 Changing a baseline?
@@ -38,7 +39,7 @@ Adding diagnostics?
 - Read [process-metric-diagnose.md](./process-metric-diagnose.md).
 - Gate expensive or debug-only diagnostics behind config.
 - Keep diagnostics separate from the formal metric path.
-- Use `process.py` only for reusable diagnostic input preparation, not for launching diagnostic runs.
+- Use `process.py` for reusable diagnostic input preparation or composite diagnostic/status assembly, not for launching diagnostic runs.
 
 Creating figures or reports?
 
@@ -49,6 +50,7 @@ Creating figures or reports?
 ## Core Rules Summary
 
 - Script/main code is the execution surface, but must not contain reward math, training internals, metric formulas, plotting details, or ad hoc file naming.
-- `process.py` is a reusable processing-helper module, not an entrypoint; split only when there is real reuse, testing, review, or diagnostic separation value.
+- Algorithm/runtime modules serve algorithm mechanics only; complex statistics and diagnostics belong outside them.
+- `process.py` is a reusable preprocessing and composite-result module, not an entrypoint or output writer; split only when there is real reuse, testing, review, or diagnostic separation value.
 - Baseline and metric changes must be recorded before results are compared or cited.
 - Figure and report artifacts must trace back to valid outputs and frozen definitions.

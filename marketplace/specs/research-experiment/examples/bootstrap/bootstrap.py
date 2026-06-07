@@ -18,7 +18,7 @@ def create_scaffold(package_name: str, task_slot: str):
         (src_dir / d).mkdir(parents=True, exist_ok=True)
         (src_dir / d / "__init__.py").touch()
     
-    for mod in ["metrics.py", "diagnostics.py", "numerics.py", "schema.py", "validate.py", "plotting.py", "provenance.py"]:
+    for mod in ["process.py", "metrics.py", "diagnostics.py", "numerics.py", "schema.py", "validate.py", "plotting.py", "provenance.py"]:
         (src_dir / mod).touch()
         
     # 2. Configs
