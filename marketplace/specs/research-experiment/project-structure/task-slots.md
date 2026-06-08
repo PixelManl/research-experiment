@@ -56,6 +56,14 @@ Links:
 - Ledger: `docs/research-log/tasks/<task-slot>.md`
 ```
 
+## Staged expansion vs new task-slot
+
+A failed run, No-Go result, reviewer objection, or new substage does not automatically require a new task-slot or Trellis task.
+
+Before creating a new task for a follow-up, read [staged-task-expansion.md](./staged-task-expansion.md). If the scientific object, code path, and claim boundary remain continuous, keep the current Trellis task as the control plane and append a new Stage to its PRD.
+
+Create a new task-slot only when the research workstream itself changes: new scientific object, new claim target, new output family, mostly independent code path, archived prior task, or substantially different risk level.
+
 ## Lifecycle states
 
 - `active`: current work.
@@ -67,4 +75,12 @@ Links:
 
 - Reusing a task-slot for a different scientific question.
 - Creating a new task-slot only because the first run failed.
+- Creating a new Trellis task only because a continuous thread needs Stage F.1, G0, G1, or G2 sub-object expansion.
 - Continuing an invalidated task-slot without updating the source-of-truth ledger.
+
+## Related Specs
+
+- [staged-task-expansion.md](./staged-task-expansion.md)
+- [tests-organization.md](./tests-organization.md)
+- [scripts-organization.md](./scripts-organization.md)
+- [outputs-organization.md](./outputs-organization.md)

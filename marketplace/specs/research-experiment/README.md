@@ -90,6 +90,12 @@ Starting a new task-slot?
 - Read [project-structure/outputs-organization.md](./project-structure/outputs-organization.md).
 - Create or update `docs/research-log/tasks/<task-slot>.md`.
 
+Extending the same Trellis task with Stage A/B/C/G0/G1/G2?
+
+- Read [project-structure/staged-task-expansion.md](./project-structure/staged-task-expansion.md).
+- Expand the current PRD when the same scientific object, code path, and claim boundary keep evolving.
+- Use G0/G1/G2 as local sub-object expansion labels when dependency order is clearer than strict alphabetical order.
+
 Changing math, loss, reward, or objective code?
 
 - Read [research-code/math-formula-mapping.md](./research-code/math-formula-mapping.md).
