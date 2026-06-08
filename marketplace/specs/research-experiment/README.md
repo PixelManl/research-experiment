@@ -110,6 +110,13 @@ Before heavy compute?
 - Read [experiment-runtime/smoke-dry-run.md](./experiment-runtime/smoke-dry-run.md).
 - Read [guides/before-heavy-run-checklist.md](./guides/before-heavy-run-checklist.md).
 - Read [agent-collaboration/pre-heavy-run-review.md](./agent-collaboration/pre-heavy-run-review.md).
+- Read [agent-collaboration/external-heavy-model-review.md](./agent-collaboration/external-heavy-model-review.md) only when the user asks for or approves an external heavy-model packet.
+
+Preparing a heavy-package for GPT-5.5 Pro or another advanced external model?
+
+- Read [agent-collaboration/external-heavy-model-review.md](./agent-collaboration/external-heavy-model-review.md).
+- Package sanitized context with a two-part English prompt: current-problem directed review plus future-direction creative review.
+- Do not create, export, or upload a heavy-package without explicit user request or approval.
 
 Changing a baseline or metric?
 

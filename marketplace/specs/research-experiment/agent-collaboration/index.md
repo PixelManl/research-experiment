@@ -10,6 +10,7 @@ This layer defines human-agent collaboration: what AI may execute, what it may d
 | [reviewer-objections-ledger.md](./reviewer-objections-ledger.md) | Objections, uncertainty, and counter-evidence tracking | Reviewing claims, formulas, baselines, or paper-facing results | Must Read |
 | [failure-evidence-ledger.md](./failure-evidence-ledger.md) | Failed runs and invalidated evidence as source-backed records | A run fails, a bug invalidates outputs, or evidence contradicts the story | Must Read |
 | [pre-heavy-run-review.md](./pre-heavy-run-review.md) | Independent review before expensive compute | Before heavy runs, large sweeps, or remote jobs | Must Read |
+| [external-heavy-model-review.md](./external-heavy-model-review.md) | Explicit heavy-package protocol for external advanced AI review | Packaging high-risk changes, heavy runs, bugs, or claims for a heavy model | Conditional |
 | [break-loop-ci.md](./break-loop-ci.md) | Post-bug prevention and minimal CI gates | After fixing bugs or discovering repeated failure modes | Must Read |
 | [claims-and-decisions.md](./claims-and-decisions.md) | Claim strength, stop/continue decisions, and human approvals | Making scientific claims, stopping/reframing, or citing outputs | Must Read |
 
@@ -26,6 +27,13 @@ Before heavy compute?
 - Read [pre-heavy-run-review.md](./pre-heavy-run-review.md).
 - Ask an independent reviewer to inspect code, math, configs, smoke evidence, and output paths.
 - Do not launch the heavy run until review objections are resolved or explicitly accepted.
+
+Preparing a heavy-package for GPT-5.5 Pro or another external heavy model?
+
+- Read [external-heavy-model-review.md](./external-heavy-model-review.md).
+- Package only after explicit user request or approval.
+- Use a two-part English prompt: current-problem directed review plus future-direction creative review.
+- Treat the heavy model's response as read-only advice until findings are mapped back to files, tests, specs, ledgers, and human-owned decisions.
 
 When a result fails or becomes invalid?
 
