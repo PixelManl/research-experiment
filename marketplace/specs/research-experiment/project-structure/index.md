@@ -8,7 +8,7 @@ This layer defines the filesystem contract for research experiment projects. Thi
 |---|---|---|---|
 | [directory-layout.md](./directory-layout.md) | Repository boundaries and required top-level layout | Initializing a project, moving files, deciding where code belongs | Must Read |
 | [task-slots.md](./task-slots.md) | `<task-slot>` naming, mapping, and lifecycle | Creating, pausing, invalidating, or archiving a research workstream | Must Read |
-| [staged-task-expansion.md](./staged-task-expansion.md) | PRD stage expansion protocol for continuous research threads | Deciding whether to append Stage A/B/C, A1/A2/A3, or G0/G1/G2 instead of creating a new Trellis task | Must Read |
+| [staged-task-expansion.md](./staged-task-expansion.md) | PRD stage expansion protocol for continuous research threads | Deciding whether to append Stage A/B/C or A1/A2/A3 instead of creating a new Trellis task | Must Read |
 | [tests-organization.md](./tests-organization.md) | Task-scoped test organization | Adding or reorganizing tests | Must Read |
 | [scripts-organization.md](./scripts-organization.md) | Task-scoped scripts plus common/remote helpers | Adding experiment scripts, remote scripts, or reusable helpers | Must Read |
 | [outputs-organization.md](./outputs-organization.md) | Output paths, indexes, run validity states | Designing run outputs, cleaning results, invalidating outputs | Must Read |

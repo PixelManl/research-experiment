@@ -9,7 +9,7 @@ Read this when:
 - a research task keeps growing around the same scientific object;
 - a failed or No-Go stage becomes the input to a redesign;
 - an agent wants to create a new Trellis task for a follow-up that may belong in the current task;
-- stage labels such as `A/B/C`, `A1/A2/A3`, `F.1/F.2`, or `G0/G2/G1` are being appended to one task;
+- stage labels such as `A/B/C` or `A1/A2/A3` are being appended to one task;
 - the team needs to decide whether a follow-up is a new task, a new stage, or a substage.
 
 ## Core Definition
@@ -65,10 +65,10 @@ Example expansion:
 Stage D No-Go
   -> Stage E redesign
   -> Stage F exact reference implementation
-  -> Stage F.1 hardening
-  -> Stage G0 route policy
+  -> Stage F1 hardening
+  -> Stage G1 route policy
   -> Stage G2 packet schema / identity contract
-  -> Stage G1 fixed-lag sync/window test contract
+  -> Stage G3 fixed-lag sync/window test contract
 ```
 
 Although these stages may become numerous, they belong in one task when they keep refining the same object and boundary.
@@ -107,33 +107,20 @@ A1
 A2
 A3
 B
+B1
+B2
 C
-D
-E
-F
-F.1
-F.2
-G0
-G1
-G2
 ```
 
-Use simple letters for the main sequence. Split any stage into local substages when the subproblem needs clearer preregistration, contract, results, review, or acceptance criteria. This is not limited to later stages: `A` may become `A1/A2/A3`, `F` may become `F.1/F.2`, and `G` may become `G0/G1/G2`.
+Use letters for main stages and letter-number labels for substages. Any stage may become `A1/A2/A3` when the substage boundary is useful.
 
 Important rule:
 
 ```text
-Any stage may be decomposed into local substages when the substage boundary is useful.
 Substage labels are local control-plane labels, not global chronological order.
 ```
 
-For example, `G0 -> G2 -> G1` is valid if:
-
-- `G0` selects a route or policy;
-- `G2` defines a packet, schema, identity, or availability layer needed first;
-- `G1` depends on `G2` and defines a fixed-lag, sync-window, or algorithm test contract.
-
-When execution order is nonlinear, or when a main stage is split into local substages such as `A1/A2/A3`, the PRD must record dependency order explicitly.
+For example, `B1 -> B3 -> B2` is valid if dependency order requires it. The PRD must record that dependency order explicitly.
 
 ## PRD Requirements
 
@@ -175,9 +162,9 @@ Next blocked stage:
 The PRD should preserve locked decisions such as:
 
 ```text
-Stage G0 selects the G1/G2 deployable exactness path.
+Stage G1 selects the deployable exactness path.
 Stage G2 defines atom-packet identity and availability.
-Stage G1 depends on G2 and expands sync-anchor/window tests.
+Stage G3 depends on G2 and expands sync-anchor/window tests.
 ```
 
 The PRD must also preserve forbidden work. This prevents later stages from silently drifting into claims or implementation routes that were explicitly blocked.
@@ -189,7 +176,7 @@ Use separate acceptance criteria for each stage. Do not collapse all stages into
 Example:
 
 ```markdown
-## Stage G0 Acceptance Criteria
+## Stage G1 Acceptance Criteria
 
 - [x] Route selected.
 - [x] Packet identity policy recorded.
@@ -201,7 +188,7 @@ Example:
 - [x] `received_t` excluded from factor identity.
 - [x] Online/offline packet availability tests pass.
 
-## Stage G1 Acceptance Criteria
+## Stage G3 Acceptance Criteria
 
 - [x] Sync-anchor schema specified.
 - [x] Late atom policy specified.
@@ -241,9 +228,9 @@ research/stage-d-dynamic-private-history-results.md
 research/stage-e-factor-graph-contract.md
 research/stage-f-factor-graph-reference-results.md
 research/stage-f1-external-review-hardening-results.md
-research/stage-g0-route-acceptance-and-packet-policy.md
+research/stage-g1-route-acceptance-and-packet-policy.md
 research/stage-g2-atom-packet-contract-results.md
-research/stage-g1-fixed-lag-sync-window-test-contract.md
+research/stage-g3-fixed-lag-sync-window-test-contract.md
 ```
 
 Task-local `research/` files are working evidence. Stable conclusions must be promoted into durable project records such as:
@@ -349,9 +336,9 @@ If execution is nonlinear, record:
 ```markdown
 ## Stage Dependency Order
 
-- Stage G0 selects route policy.
+- Stage G1 selects route policy.
 - Stage G2 defines packet identity and availability.
-- Stage G1 depends on G2 and defines fixed-lag sync/window tests.
+- Stage G3 depends on G2 and defines fixed-lag sync/window tests.
 ```
 
 A nonlinear order is acceptable only when the dependency explanation is explicit.
@@ -382,8 +369,8 @@ Tell the implementation pass what was actually changed or produced.
 Record contracts, review inputs, claim boundaries, and external audits:
 
 ```text
-research/stage-g0-route-acceptance-and-packet-policy.md
-research/stage-g1-fixed-lag-sync-window-test-contract.md
+research/stage-g1-route-acceptance-and-packet-policy.md
+research/stage-g3-fixed-lag-sync-window-test-contract.md
 research/stage-f-55pro-external-review-response.md
 .trellis/spec/...
 ```

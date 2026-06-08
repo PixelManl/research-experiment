@@ -75,7 +75,7 @@ Create a new task-slot only when the research workstream itself changes: new sci
 
 - Reusing a task-slot for a different scientific question.
 - Creating a new task-slot only because the first run failed.
-- Creating a new Trellis task only because a continuous thread needs Stage F.1, G0, G1, or G2 sub-object expansion.
+- Creating a new Trellis task only because a continuous thread needs local substages such as A1/A2/A3.
 - Continuing an invalidated task-slot without updating the source-of-truth ledger.
 
 ## Related Specs

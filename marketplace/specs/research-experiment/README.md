@@ -94,7 +94,7 @@ Extending the same Trellis task with Stage A/B/C or A1/A2/A3?
 
 - Read [project-structure/staged-task-expansion.md](./project-structure/staged-task-expansion.md).
 - Expand the current PRD when the same scientific object, code path, and claim boundary keep evolving.
-- Split any stage into local substages such as A1/A2/A3, F.1/F.2, or G0/G1/G2 when the substage boundary is useful.
+- Split any stage into local substages such as A1/A2/A3 when the substage boundary is useful.
 
 Changing math, loss, reward, or objective code?
 
