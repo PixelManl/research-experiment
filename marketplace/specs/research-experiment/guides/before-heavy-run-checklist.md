@@ -39,6 +39,12 @@ Is there a cheaper diagnostic that could falsify the reason for this run?
 
 If yes, run that first.
 
+## Optional external heavy-model review
+
+If the user explicitly asks for or approves external heavy-model review, prepare a heavy-package using [../agent-collaboration/external-heavy-model-review.md](../agent-collaboration/external-heavy-model-review.md).
+
+Do not create, export, upload, or send a heavy-package without explicit user request or approval. The package prompt must include both current-problem directed review and future-direction creative review.
+
 ## Review prompt for checker agent
 
 ```text
@@ -61,4 +67,5 @@ Before launching the run:
 - [../experiment-runtime/smoke-dry-run.md](../experiment-runtime/smoke-dry-run.md)
 - [../experiment-runtime/remote-concurrency.md](../experiment-runtime/remote-concurrency.md)
 - [../agent-collaboration/pre-heavy-run-review.md](../agent-collaboration/pre-heavy-run-review.md)
+- [../agent-collaboration/external-heavy-model-review.md](../agent-collaboration/external-heavy-model-review.md)
 - [../agent-collaboration/ownership-tiers.md](../agent-collaboration/ownership-tiers.md)
