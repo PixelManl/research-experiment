@@ -9,7 +9,7 @@ Read this when:
 - a research task keeps growing around the same scientific object;
 - a failed or No-Go stage becomes the input to a redesign;
 - an agent wants to create a new Trellis task for a follow-up that may belong in the current task;
-- stage labels such as `A/B/C/D/E/F/F.1/G0/G2/G1` are being appended to one task;
+- stage labels such as `A/B/C`, `A1/A2/A3`, `F.1/F.2`, or `G0/G2/G1` are being appended to one task;
 - the team needs to decide whether a follow-up is a new task, a new stage, or a substage.
 
 ## Core Definition
@@ -103,23 +103,28 @@ Allowed examples:
 
 ```text
 A
+A1
+A2
+A3
 B
 C
 D
 E
 F
 F.1
+F.2
 G0
 G1
 G2
 ```
 
-Use simple letters for the main sequence. Use decimals or suffixes for hardening and repair. Use labels such as `G0/G1/G2` when a smaller sub-object needs its own local decomposition after earlier labels are already crowded or when the dependency structure is clearer than a strict sequence.
+Use simple letters for the main sequence. Split any stage into local substages when the subproblem needs clearer preregistration, contract, results, review, or acceptance criteria. This is not limited to later stages: `A` may become `A1/A2/A3`, `F` may become `F.1/F.2`, and `G` may become `G0/G1/G2`.
 
 Important rule:
 
 ```text
-G0/G1/G2 may be sub-object expansion labels, not global chronological order.
+Any stage may be decomposed into local substages when the substage boundary is useful.
+Substage labels are local control-plane labels, not global chronological order.
 ```
 
 For example, `G0 -> G2 -> G1` is valid if:
@@ -128,7 +133,7 @@ For example, `G0 -> G2 -> G1` is valid if:
 - `G2` defines a packet, schema, identity, or availability layer needed first;
 - `G1` depends on `G2` and defines a fixed-lag, sync-window, or algorithm test contract.
 
-When execution order is nonlinear, the PRD must record dependency order explicitly.
+When execution order is nonlinear, or when a main stage is split into local substages such as `A1/A2/A3`, the PRD must record dependency order explicitly.
 
 ## PRD Requirements
 
@@ -337,7 +342,7 @@ Do not delete No-Go evidence. Later stages should cite it as a root constraint.
 
 ## Nonlinear Stage Order
 
-Stage IDs do not require execution in alphabetical or numerical order. Dependency order matters more than label order.
+Stage IDs and substage IDs do not require execution in alphabetical or numerical order. Dependency order matters more than label order.
 
 If execution is nonlinear, record:
 
