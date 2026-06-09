@@ -10,7 +10,8 @@ Read this when:
 - a failed or No-Go stage becomes the input to a redesign;
 - an agent wants to create a new Trellis task for a follow-up that may belong in the current task;
 - stage labels such as `A/B/C` or `A1/A2/A3` are being appended to one task;
-- the team needs to decide whether a follow-up is a new task, a new stage, or a substage.
+- the team needs to decide whether a follow-up is a new task, a new stage, or a substage;
+- a technically correct result does not yet support the original value question.
 
 ## Core Definition
 
@@ -24,6 +25,15 @@ Simple rule:
 Do not open a new task for every new idea.
 Keep expanding the same task when the scientific object and claim boundary remain continuous.
 ```
+
+Continuation rule:
+
+```text
+Same task identity does not justify the next stage.
+Every route expansion needs a value-bearing judgment.
+```
+
+Staged expansion prevents task fragmentation. It must not give a route indefinite life after correct but value-insufficient results. Before appending a stage that increases exactness, model complexity, protocol complexity, benchmark scope, compute cost, or control-plane infrastructure, record why that stage still serves the original value question.
 
 The PRD is not a product-management ceremony. In this template, the PRD is the task control plane: it records the current stage map, locked user decisions, forbidden work, acceptance criteria, and open blockers.
 
@@ -57,6 +67,7 @@ Expand the current Trellis task when most of these are true:
 - the new stage depends on prior stage results;
 - a No-Go, review finding, or failed result becomes the input to the next stage;
 - the follow-up is a natural continuation: preregistration, contract, implementation, review, hardening, route policy, schema, protocol, or test contract;
+- the value-bearing judgment for the next stage is still explicit;
 - the work does not need independent parallel management.
 
 Example expansion:
@@ -72,6 +83,8 @@ Stage D No-Go
 ```
 
 Although these stages may become numerous, they belong in one task when they keep refining the same object and boundary.
+
+However, continuity is not enough. If the route has produced correct artifacts but still does not support the original value question, run a Route Value Audit before adding the next stage. Do not treat `Stage completed` as `route justified`.
 
 ## When to Create a New Trellis Task
 
@@ -125,6 +138,20 @@ For example, `B1 -> B3 -> B2` is valid if dependency order requires it. The PRD 
 ## PRD Requirements
 
 When a Trellis task uses staged expansion, the PRD must stay current. It should not be rewritten from scratch each time. Append stages and update the control sections.
+
+Every appended stage must have a continuation warrant:
+
+```markdown
+## Continuation Warrant
+
+Original value question:
+Value-bearing judgment:
+Why this stage is needed:
+Strong simple baseline:
+Minimum discriminating test or blocker:
+```
+
+For low-risk local implementation stages, this can be one concise paragraph. For stages that increase exactness, model complexity, protocol complexity, benchmark scope, heavy compute, or control-plane infrastructure, this warrant must be explicit and reviewable.
 
 Minimum PRD sections:
 
@@ -272,6 +299,7 @@ A No-Go stage must still produce an artifact. It becomes input to the next stage
 | Test Contract | Define acceptance tests before implementation |
 | Review Response | Map reviewer objections to fixes, blockers, rejected advice, or human decisions |
 | Claim Boundary | Narrow or update allowed wording, forbidden wording, and stop rules |
+| Route Value Audit | Decide whether correct artifacts still support the original value question before continuing |
 
 A stage may be purely conceptual or contractual. Do not force every stage to contain implementation.
 
@@ -326,6 +354,8 @@ A No-Go must record:
 - what the next stage must preserve or avoid.
 
 Do not delete No-Go evidence. Later stages should cite it as a root constraint.
+
+A No-Go must not automatically become a more complex repair route. If the next stage repairs exactness, adds model complexity, expands protocols, or builds benchmark/control-plane infrastructure, first run the Route Value Audit in [../research-pitfalls/route-value-drift.md](../research-pitfalls/route-value-drift.md).
 
 ## Nonlinear Stage Order
 
@@ -404,3 +434,4 @@ Do not commit speculative stage notes as final evidence unless they are clearly 
 - [../agent-collaboration/ownership-tiers.md](../agent-collaboration/ownership-tiers.md)
 - [../agent-collaboration/claims-and-decisions.md](../agent-collaboration/claims-and-decisions.md)
 - [../agent-collaboration/external-heavy-model-review.md](../agent-collaboration/external-heavy-model-review.md)
+- [../research-pitfalls/route-value-drift.md](../research-pitfalls/route-value-drift.md)

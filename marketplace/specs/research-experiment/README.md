@@ -96,6 +96,12 @@ Extending the same Trellis task with Stage A/B/C or A1/A2/A3?
 - Expand the current PRD when the same scientific object, code path, and claim boundary keep evolving.
 - Split any stage into local substages such as A1/A2/A3 when the substage boundary is useful.
 
+Continuing after correct but value-insufficient results?
+
+- Read [research-pitfalls/route-value-drift.md](./research-pitfalls/route-value-drift.md).
+- Restate the original value question and value-bearing judgment before adding the next stage.
+- Define the minimum discriminating test against the strongest simple baseline before building more exactness, protocol, benchmark, or control-plane infrastructure.
+
 Changing math, loss, reward, or objective code?
 
 - Read [research-code/math-formula-mapping.md](./research-code/math-formula-mapping.md).
@@ -133,6 +139,7 @@ Changing a baseline or metric?
 Changing a core mechanism that may affect downstream logic?
 
 - Read [research-pitfalls/coupled-logic-drift.md](./research-pitfalls/coupled-logic-drift.md).
+- Read [research-pitfalls/route-value-drift.md](./research-pitfalls/route-value-drift.md) if the change grows into a larger route repair or infrastructure expansion.
 - Read [research-code/math-formula-mapping.md](./research-code/math-formula-mapping.md).
 - Read [research-code/validation-assertions.md](./research-code/validation-assertions.md).
 - Trace dependent objectives, entropy terms, metrics, diagnostics, baselines, and reports before accepting the change.
@@ -149,6 +156,7 @@ Handling failed or invalidated results?
 - Read [agent-collaboration/failure-evidence-ledger.md](./agent-collaboration/failure-evidence-ledger.md).
 - Read [agent-collaboration/claims-and-decisions.md](./agent-collaboration/claims-and-decisions.md).
 - Read [guides/research-stop-continue-decision.md](./guides/research-stop-continue-decision.md).
+- Read [research-pitfalls/route-value-drift.md](./research-pitfalls/route-value-drift.md) before turning a No-Go into a more complex repair route.
 - Update invalidated results and source-of-truth records.
 
 After fixing a bug?
