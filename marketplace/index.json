@@ -15,36 +15,6 @@
         "rl",
         "ml"
       ]
-    },
-    {
-      "id": "research-experiment-scaffolder",
-      "type": "skill",
-      "name": "Research Experiment Scaffolder",
-      "description": "Optional Agent Skill for auditing or creating conservative Research-Experiment filesystem skeletons and task-slot scaffolds with dry-run/apply safety.",
-      "path": "marketplace/skills/scaffolder",
-      "tags": [
-        "research",
-        "scaffold",
-        "task-slot",
-        "agent-skill",
-        "dry-run"
-      ]
-    },
-    {
-      "id": "logic-chain-checker",
-      "type": "agent",
-      "name": "Logic Chain Checker",
-      "description": "Read-only agent for checking coupled logic drift after core research logic changes, especially RL/ML action, objective, entropy, metric, baseline, report, and claim coupling.",
-      "path": "marketplace/agents/logic-chain-checker.md",
-      "tags": [
-        "research",
-        "agent",
-        "review",
-        "logic-chain",
-        "coupled-logic-drift",
-        "rl",
-        "ml"
-      ]
     }
   ]
 }
