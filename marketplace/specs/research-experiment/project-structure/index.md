@@ -27,6 +27,7 @@ Extending an ongoing Trellis task with Stage A/B/C or A1/A2/A3?
 
 - Read [staged-task-expansion.md](./staged-task-expansion.md).
 - Expand the current PRD when the scientific object, code path, and claim boundary remain continuous.
+- In Trellis 0.6 complex tasks, keep `prd.md` for stage/value control, `design.md` for technical contracts, and `implement.md` for checklist and validation gates.
 - Create a new task only when the object, claim target, output family, risk level, or control plane changes.
 
 Adding tests?
@@ -56,6 +57,7 @@ Cleaning old code?
 
 - `tests/`, `scripts/`, `outputs/`, and `docs/research-log/tasks/` must use the same `<task-slot>` for the same research workstream.
 - A continuous research thread should expand stages inside the current Trellis task PRD instead of fragmenting into new tasks.
+- Trellis 0.6 planning artifacts should stay separated: `prd.md` for value/stages, `design.md` for contracts, `implement.md` for execution and verification.
 - Root indexes and task-slot indexes must stay short: directory, command, status, links.
 - Task-specific glue does not belong in the repository root or reusable `src/<package>/` modules.
 - Deprecated implementations are traced through git and ledger entries, not dead files.

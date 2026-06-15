@@ -90,6 +90,14 @@ Starting a new task-slot?
 - Read [project-structure/outputs-organization.md](./project-structure/outputs-organization.md).
 - Create or update `docs/research-log/tasks/<task-slot>.md`.
 
+Planning a complex Trellis 0.6 research task?
+
+- Read [project-structure/staged-task-expansion.md](./project-structure/staged-task-expansion.md).
+- Use `prd.md` as the stage/value control plane: original value question, stage map, claim boundaries, acceptance criteria, blockers, forbidden work.
+- Use `design.md` for technical contracts, data flow, formula-to-code mapping, dataset/simulator assumptions, baselines, and tradeoffs.
+- Use `implement.md` for ordered execution checklist, validation commands, smoke/heavy-run gates, review gates, and stop conditions.
+- Keep `implement.jsonl` and `check.jsonl` as file-reference manifests with reasons, not duplicate plans.
+
 Extending the same Trellis task with Stage A/B/C or A1/A2/A3?
 
 - Read [project-structure/staged-task-expansion.md](./project-structure/staged-task-expansion.md).

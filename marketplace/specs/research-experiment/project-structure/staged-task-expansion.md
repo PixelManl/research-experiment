@@ -139,6 +139,20 @@ For example, `B1 -> B3 -> B2` is valid if dependency order requires it. The PRD 
 
 When a Trellis task uses staged expansion, the PRD must stay current. It should not be rewritten from scratch each time. Append stages and update the control sections.
 
+### Trellis 0.6 Planning Artifact Mapping
+
+Trellis 0.6 creates `prd.md` by default and uses `design.md` and `implement.md` for complex planning. In this template, these files are a research control plane, not product-management ceremony.
+
+Use them this way:
+
+| Artifact | Research role | Must contain |
+|---|---|---|
+| `prd.md` | Stage and value control plane | original value question, stage map, locked user decisions, claim boundaries, acceptance criteria, blockers, forbidden work |
+| `design.md` | Technical boundary and contract map | data flow, model/process boundaries, formula-to-code contracts, dataset/simulator assumptions, baseline and compatibility tradeoffs |
+| `implement.md` | Execution and verification plan | ordered checklist, validation commands, smoke/heavy-run gates, review gates, rollback or stop conditions |
+
+Do not duplicate every detail across all three files. Put route-level intent and claim control in `prd.md`, technical contracts in `design.md`, and executable verification steps in `implement.md`.
+
 Every appended stage must have a continuation warrant:
 
 ```markdown
@@ -195,6 +209,8 @@ Stage G3 depends on G2 and expands sync-anchor/window tests.
 ```
 
 The PRD must also preserve forbidden work. This prevents later stages from silently drifting into claims or implementation routes that were explicitly blocked.
+
+For PRD-only lightweight tasks, keep `prd.md` concise and do not create artificial `design.md` or `implement.md` ceremony. For complex research tasks, use `design.md` and `implement.md` to keep technical contracts and validation commands out of the PRD while still letting implement/check agents load the right context.
 
 ## Acceptance Criteria by Stage
 
@@ -375,7 +391,7 @@ A nonlinear order is acceptable only when the dependency explanation is explicit
 
 ## `implement.jsonl` and `check.jsonl`
 
-Use task context logs to keep implementation and review grounded.
+Use task context logs to keep implementation and review grounded. In Trellis 0.6, implementation and checking context loads JSONL entries plus task artifacts such as `prd.md`, `design.md`, and `implement.md`; use JSONL for file references and reasons, not as a second PRD.
 
 ### `implement.jsonl`
 
@@ -394,6 +410,8 @@ Purpose:
 Tell the implementation pass what was actually changed or produced.
 ```
 
+For complex tasks, pair `implement.jsonl` with `implement.md`: `implement.md` owns the ordered execution plan, while `implement.jsonl` points to the specs, source files, and research artifacts needed for implementation.
+
 ### `check.jsonl`
 
 Record contracts, review inputs, claim boundaries, and external audits:
@@ -410,6 +428,8 @@ Purpose:
 ```text
 Tell the checking pass what contract, review, and forbidden boundaries must be enforced.
 ```
+
+For complex tasks, pair `check.jsonl` with `design.md` and `prd.md`: `design.md` owns technical contracts, `prd.md` owns value and claim boundaries, and `check.jsonl` points to the exact files the checker must read.
 
 ## Commit Rule
 
