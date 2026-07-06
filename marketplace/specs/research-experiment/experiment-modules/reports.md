@@ -44,8 +44,11 @@ Use these labels:
 
 ## Runs used
 
-| Run | Status | Why usable |
-|---|---|---|
+List registry run ids (`runs.py list <slot>` / `runs.py show <id>`), not paths:
+
+| Run | Exec | Validity | Why usable |
+|---|---|---|---|
+| `ppo-handwritten#0007` | success | valid | canonical after GAE fix |
 
 ## Observations
 
@@ -68,5 +71,6 @@ Name/date:
 
 - collapsing “the model learned” and “the reward increased once” into one claim;
 - omitting failed runs that affect interpretation;
-- using invalidated outputs;
+- using invalidated or superseded runs (`runs.py check` flags reports citing them);
+- citing runs by directory path instead of registry run id;
 - letting agent change narrative after pushback without updating objections and evidence.

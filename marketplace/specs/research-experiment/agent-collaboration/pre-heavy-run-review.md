@@ -34,7 +34,8 @@ Command:
 Config:
 Output target:
 Git commit:
-Git diff patch will be saved: yes/no
+Registry check (`runs.py check <task-slot>`): pass/fail
+Current canonical (`runs.py latest <task-slot>`):
 Smoke run:
 Tests:
 Known objections:

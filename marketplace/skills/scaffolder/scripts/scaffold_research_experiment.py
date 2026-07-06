@@ -91,7 +91,7 @@ def list_output_task_dirs(root: Path) -> tuple[set[str], set[str]]:
     for p in directory.iterdir():
         if not p.is_dir():
             continue
-        if (p / "index.md").exists():
+        if (p / "runs.jsonl").exists() or (p / "index.md").exists():
             task_dirs.add(p.name)
         else:
             output_only.add(p.name)
@@ -124,19 +124,73 @@ def audit(root: Path) -> dict:
     if not package:
         warnings.append("Package name could not be inferred.")
     for item in task_slots:
-        missing = [k for k, v in item.items() if k != "task_slot" and not v]
+        missing = [k for k, v in item.items() if k not in {"task_slot", "outputs"} and not v]
         if missing:
             warnings.append(f"Task-slot {item['task_slot']} is not fully aligned: missing {', '.join(missing)}.")
+    has_config_truth = (root / "configs" / "truth" / "config.yaml").exists() and (
+        root / "configs" / "truth" / "config_truth.md"
+    ).exists()
+    if (root / "configs" / "config.yaml").exists() and not has_config_truth:
+        warnings.append("Hydra config exists but configs/truth/config.yaml and config_truth.md are not both present.")
     return {
         "root": str(root),
         "package": package,
         "has_trellis_spec": (root / ".trellis" / "spec" / "README.md").exists(),
         "has_hydra_config": (root / "configs" / "config.yaml").exists(),
+        "has_config_truth": has_config_truth,
         "shared_test_dirs": sorted(tests & SHARED_TEST_DIRS),
         "task_slots": task_slots,
         "output_only_areas": sorted(output_only_areas),
         "warnings": warnings,
     }
+
+
+def default_config_content(task_slot: str, *, truth: bool = False) -> str:
+    if truth:
+        header = "# CONFIG TRUTH\n# Baseline default config. Edit only with explicit human approval."
+    else:
+        header = "# MAIN CONFIG\n# Truth baseline: configs/truth/config.yaml\n# Validate this file against the truth baseline before formal runs."
+    return f"""{header}
+defaults:
+  - task: {task_slot}
+  - experiment: default
+  - debug: off
+  - _self_
+
+run:
+  name: default
+  seed: 0
+
+validation:
+  modified_original: false
+  modification_reason: ""
+  modification_date: ""
+"""
+
+
+def config_truth_doc_content(task_slot: str) -> str:
+    return f"""# Config Truth
+
+Task slot: `{task_slot}`
+
+## Source References
+
+| Source | Link / Path | Notes |
+|---|---|---|
+| Original code config | TBD | Fill before formal experiments |
+| Paper / report config | TBD | Fill before formal experiments |
+
+## Required Parameter Check
+
+| Parameter | Source value | Current value | Status |
+|---|---|---|---|
+| `task.slot` | `{task_slot}` | `{task_slot}` | pending source confirmation |
+| `run.seed` | `0` | `0` | pending source confirmation |
+
+## Optional Extensions
+
+Optional project-added features must default off until explicitly approved.
+"""
 
 
 def base_project_files(package: str, task_slot: str) -> list[PlannedFile]:
@@ -149,24 +203,33 @@ def base_project_files(package: str, task_slot: str) -> list[PlannedFile]:
         ),
         PlannedFile(Path(f"src/{package}/runner/__init__.py"), ""),
         PlannedFile(Path(f"src/{package}/policy/__init__.py"), ""),
-        PlannedFile(
-            Path("configs/config.yaml"),
-            f"defaults:\n  - task: {task_slot}\n  - experiment: default\n  - debug: off\n  - _self_\n\nseed: 0\n",
-        ),
+        PlannedFile(Path("configs/config.yaml"), default_config_content(task_slot)),
+        PlannedFile(Path("configs/truth/config.yaml"), default_config_content(task_slot, truth=True)),
+        PlannedFile(Path("configs/truth/config_truth.md"), config_truth_doc_content(task_slot)),
         PlannedFile(
             Path("configs/schema.py"),
             "from __future__ import annotations\n\n# Compatibility import or structured Hydra config roots.\n",
         ),
-        PlannedFile(Path("configs/experiment/default.yaml"), "name: default\n"),
-        PlannedFile(Path("configs/debug/off.yaml"), "enabled: false\nmode: off\n"),
-        PlannedFile(Path("configs/debug/smoke.yaml"), "enabled: true\nmode: smoke\nmax_steps: 2\n"),
-        PlannedFile(Path("configs/debug/dry_run.yaml"), "enabled: true\nmode: dry_run\n"),
+        PlannedFile(Path("configs/experiment/default.yaml"), "experiment:\n  name: default\n"),
+        PlannedFile(Path("configs/debug/off.yaml"), "debug:\n  enabled: false\n  mode: off\n"),
+        PlannedFile(
+            Path("configs/debug/smoke.yaml"),
+            "debug:\n  enabled: true\n  mode: smoke\n  max_steps: 2\nrun:\n  name: smoke\n",
+        ),
+        PlannedFile(Path("configs/debug/dry_run.yaml"), "debug:\n  enabled: true\n  mode: dry_run\nrun:\n  name: dry-run\n"),
+        PlannedFile(
+            Path("configs/hydra/default.yaml"),
+            "hydra:\n  run:\n    dir: outputs/${task.slot}/${now:%Y-%m-%d}/${now:%H%M%S}-${run.name}\n  job:\n    chdir: false\n",
+        ),
         PlannedFile(
             Path("tests/index.md"),
             "# Tests Index\n\n| Area / Task slot | Required command | Scope | Status |\n|---|---|---|---|\n",
         ),
         PlannedFile(Path("scripts/index.md"), "# Scripts Index\n\n| Area / Task slot | Entry | Purpose | Status |\n|---|---|---|---|\n"),
-        PlannedFile(Path("outputs/index.md"), "# Outputs Index\n\n| Task slot | Latest valid run | Status | Notes |\n|---|---|---|---|\n"),
+        PlannedFile(
+            Path("outputs/index.md"),
+            "# Outputs\n\n<!-- GENERATED by scripts/common/runs.py render - DO NOT EDIT BY HAND -->\n\n| Task slot | Canonical | Validity | Runs | Last activity |\n|---|---|---|---|---|\n",
+        ),
         PlannedFile(
             Path("docs/main/main.md"),
             "# Main Journal\n\n## YYYY-MM-DD - Project initialized\n\n### Research narrative\n\nScaffold created.\n",
@@ -187,7 +250,7 @@ def task_slot_files(task_slot: str, package: str | None, entrypoint: str | None,
     entry = entrypoint or (f"python -m {package}.main debug=smoke" if package else "TBD")
     tests = test_command or f"python -m pytest tests/{task_slot} -q"
     return [
-        PlannedFile(Path(f"configs/task/{task_slot}.yaml"), f"slot: {task_slot}\n"),
+        PlannedFile(Path(f"configs/task/{task_slot}.yaml"), f"task:\n  slot: {task_slot}\n"),
         PlannedFile(
             Path(f"tests/{task_slot}/index.md"),
             f"# {task_slot} Tests\n\nCanonical command:\n\n```bash\n{tests}\n```\n\n| File | Invariant checked | Delete/promote rule |\n|---|---|---|\n",
@@ -197,12 +260,8 @@ def task_slot_files(task_slot: str, package: str | None, entrypoint: str | None,
             f"# {task_slot} Scripts\n\nCanonical entrypoint:\n\n```bash\n{entry}\n```\n\n| Script / command | Purpose | Status |\n|---|---|---|\n",
         ),
         PlannedFile(
-            Path(f"outputs/{task_slot}/index.md"),
-            f"# {task_slot} Outputs\n\n| Date/run | Status | Config | Metrics | Claim usage |\n|---|---|---|---|---|\n\nExpected formal run layout:\n\n```text\noutputs/{task_slot}/<YYYY-MM-DD>/<HHMMSS>-<run-name>/\n```\n",
-        ),
-        PlannedFile(
             Path(f"docs/research-log/tasks/{task_slot}.md"),
-            f"# {task_slot}\n\nPurpose: TBD.\n\nCanonical test command:\n\n```bash\n{tests}\n```\n\nCanonical run command:\n\n```bash\n{entry}\n```\n\n## Status\n\nactive scaffold\n\n## Human review needed\n\n- Confirm purpose.\n- Confirm metric, baseline, formula, and heavy-run decisions before real experiments.\n",
+            f"# {task_slot}\n\nPurpose: TBD.\n\nCanonical test command:\n\n```bash\n{tests}\n```\n\nCanonical run command:\n\n```bash\n{entry}\n```\n\nRun registry: created by first registered run under `outputs/{task_slot}/runs.jsonl`.\n\n## Status\n\nactive scaffold\n\n## Human review needed\n\n- Confirm purpose.\n- Confirm metric, baseline, formula, and heavy-run decisions before real experiments.\n",
         ),
     ]
 

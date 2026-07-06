@@ -280,7 +280,7 @@ Task-local `research/` files are working evidence. Stable conclusions must be pr
 
 ```text
 docs/research-log/tasks/<task-slot>.md
-outputs/<task-slot>/index.md
+outputs/<task-slot>/runs.jsonl        # via runs.py promote/invalidate/note
 docs/research-log/source-of-truth.md
 docs/research-log/invalidated-results.md
 ```

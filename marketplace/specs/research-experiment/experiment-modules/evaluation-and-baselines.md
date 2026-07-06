@@ -32,7 +32,7 @@ If a baseline changes, update:
 - `docs/research-log/baselines.md`;
 - `docs/research-log/source-of-truth.md`;
 - `docs/research-log/invalidated-results.md`;
-- affected `outputs/<task-slot>/index.md`.
+- registry validity of affected runs (`runs.py invalidate <id> --reason ... --by ...`).
 
 Then explicitly state which previous comparisons are invalid.
 
@@ -52,12 +52,12 @@ Use `metrics.py` for computation and `reports.md`/output summaries for presentat
 
 A result can support a claim only if:
 
-1. provenance exists;
-2. config is available;
-3. git diff patch is saved;
+1. it is registered with provenance (`runs.py show <id>` resolves);
+2. config is available and its hash matches;
+3. the git snapshot ref (or clean commit) is resolvable;
 4. baseline status was active at run time;
 5. relevant objections are resolved or explicitly acknowledged;
-6. human approves claim level.
+6. registry validity is `claim-ready` (human-approved via `runs.py promote`).
 
 ## Forbidden
 

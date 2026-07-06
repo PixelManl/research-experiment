@@ -19,7 +19,7 @@ scripts/
 ├── common/
 │   ├── legacy_args.py
 │   ├── launch.py
-│   └── inspect_run.py
+│   └── runs.py            # run registry CLI: locate/compare/promote/invalidate runs
 ├── remote/
 │   ├── index.md
 │   ├── ssh_check.py
@@ -39,6 +39,7 @@ Use a compact table:
 ```markdown
 | Area | Entry | Purpose |
 |---|---|---|
+| common | `scripts/common/runs.py` | run registry: latest/list/show/compare/promote |
 | common | `scripts/common/launch.py` | shared launch helpers |
 | remote | `scripts/remote/launch_remote.py` | resource/SSH wrapper only |
 | ppo-handwritten | `scripts/ppo-handwritten/run.py` | canonical PPO task run |
@@ -87,6 +88,7 @@ Each `scripts/<task-slot>/index.md` must define:
 ## Forbidden
 
 - New root-level scripts such as `run_exp.py`, `plot_final.py`, `quick_test.py`.
+- One-off scripts that walk `outputs/` to find or aggregate runs; use or extend `scripts/common/runs.py`.
 - Duplicating core computation inside scripts.
 - Moving the execution entrypoint into `src/<package>/process.py`.
 - Adding Hydra or argparse entrypoints to `src/<package>/process.py`.

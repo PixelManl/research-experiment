@@ -69,20 +69,23 @@ Only copy to `paper/figures/` after human approval and a report/claim link.
 
 ## Required figure metadata
 
-Each figure must have either a sidecar JSON or be recorded in output index:
+Each figure must have either a sidecar JSON or be recorded in the run's registry notes. Cite runs by registry id, not by path:
 
 ```json
 {
-  "source_run": "outputs/ppo-handwritten/2026-05-31/143012-smoke",
+  "source_run": "ppo-handwritten#0007",
   "script": "scripts/ppo-handwritten/plot.py",
   "config": ".hydra/config.yaml",
   "data_manifest": "..."
 }
 ```
 
+`runs.py check` scans sidecars for ids of invalidated/superseded runs; a figure citing a dead run blocks `claim-ready` promotion.
+
 ## Forbidden
 
 - manual edits as the only source of a figure;
 - plotting from a stale CSV with no manifest;
+- citing a source run by directory path instead of registry run id;
 - changing style independently in every script;
 - paper figures that cannot be regenerated.

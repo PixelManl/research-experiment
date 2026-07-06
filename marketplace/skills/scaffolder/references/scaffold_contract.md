@@ -23,7 +23,10 @@ This contract only covers skeleton files and directories.
 │   ├── debug/off.yaml
 │   ├── debug/smoke.yaml
 │   ├── debug/dry_run.yaml
-│   └── hydra/
+│   ├── hydra/default.yaml
+│   └── truth/
+│       ├── config.yaml
+│       └── config_truth.md
 ├── scripts/
 │   ├── index.md
 │   ├── common/
@@ -34,8 +37,7 @@ This contract only covers skeleton files and directories.
 │   ├── common/
 │   └── <task-slot>/index.md
 ├── outputs/
-│   ├── index.md
-│   └── <task-slot>/index.md
+│   └── index.md
 └── docs/
     ├── main/main.md
     └── research-log/
@@ -48,6 +50,8 @@ This contract only covers skeleton files and directories.
 ```
 
 Optional project-specific directories such as `data/processed/<task-slot>/`, `docs/research-log/decisions/`, `docs/research-log/reports/`, and `docs/research-log/equation-maps/` may be added by the project or future commands.
+
+`outputs/<task-slot>/runs.jsonl` and `outputs/<task-slot>/index.md` are created by the first registered run or by `scripts/common/runs.py render`; the scaffold does not create hand-maintained output task indexes.
 
 ## Write Policy
 

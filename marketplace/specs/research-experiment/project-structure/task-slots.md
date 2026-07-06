@@ -31,9 +31,11 @@ Every active task-slot must have the same name across:
 ```text
 tests/<task-slot>/
 scripts/<task-slot>/
-outputs/<task-slot>/
+outputs/<task-slot>/          # runs.jsonl + generated index.md + run dirs
 docs/research-log/tasks/<task-slot>.md
 ```
+
+Run identity inside a slot is `<task-slot>#<seq>` from the run registry; see [../experiment-runtime/run-registry.md](../experiment-runtime/run-registry.md).
 
 ## Task-slot index format
 
@@ -52,7 +54,7 @@ Current status: active | paused | invalidated | archived
 Links:
 - Tests: `tests/<task-slot>/index.md`
 - Scripts: `scripts/<task-slot>/index.md`
-- Outputs: `outputs/<task-slot>/index.md`
+- Runs: `runs.py list <task-slot>` (registry: `outputs/<task-slot>/runs.jsonl`)
 - Ledger: `docs/research-log/tasks/<task-slot>.md`
 ```
 

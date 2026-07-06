@@ -1,15 +1,17 @@
 # Research-Experiment Spec Template
 
-本模板用于科研实验项目，尤其适合 RL/ML/数值实验/论文复现/算法验证场景。它是 Trellis `.trellis/spec/` 规范模板，不是可运行的科研代码项目，也不是默认脚手架生成器。它的目标不是让 AI “多写代码”，而是让 AI 在每次动手前都被约束在可追溯、可验证、可清理的人机协作流程里。
+本模板用于科研实验项目，尤其适合 RL/ML/数值实验/论文复现/算法验证场景。它是 Trellis `.trellis/spec/` 规范模板，不是可运行的科研代码项目，也不是默认脚手架生成器。它的目标不是让 AI "多写代码"，而是让 AI 在每次动手前都被约束在可追溯、可验证、可清理的人机协作流程里。
 
 ## 核心原则
 
 1. **文件系统是真源**：conversation 会消失，文件不会。重要结论、失败、失效数据、baseline 变更、reviewer objection 必须写入文件。
-2. **task-slot 贯穿全链路**：同一研究任务的 tests/scripts/outputs/ledger 必须共享同一个 `<task-slot>`。
-3. **Hydra 是配置入口**：正式实验不得靠大量 argparse 参数拼接；新增参数必须进入 schema 与配置组。
-4. **重计算前先审查**：任何重型实验必须先通过 smoke run、任务级测试、配置快照、diff patch、独立 review。
-5. **数学和实现逐行对齐**：公式、张量形状、数据 schema、数值稳定函数必须可被人类快速检查。
-6. **失败是机制证据**：失败 run 不应该隐藏，而应记录为“为什么不能继续这个叙事”的证据。
+2. **配置是真源中的真源**：**CRITICAL** - 实验配置必须有明确的"真源"。YAML 就是 truth 的表征，直接读取 yaml 就可以验证配置。真源在 `configs/truth/config.yaml`，一般不修改。
+3. **run 注册表是产出的真源**：每次正式运行自动注册进 `outputs/<task-slot>/runs.jsonl`（run id + git snapshot + 两轴状态）；定位、比较、晋升、失效 run 走 `runs.py` 一条命令，不遍历目录、不写一次性脚本。
+4. **task-slot 贯穿全链路**：同一研究任务的 tests/scripts/outputs/ledger 必须共享同一个 `<task-slot>`。
+5. **Hydra 是配置入口**：正式实验不得靠大量 argparse 参数拼接；新增参数必须进入 schema 与配置组。
+6. **重计算前先审查**：任何重型实验必须先通过 smoke run、任务级测试、配置快照、registry check、独立 review。
+7. **数学和实现逐行对齐**：公式、张量形状、数据 schema、数值稳定函数必须可被人类快速检查。
+8. **失败是机制证据**：失败 run 不应该隐藏，而应记录为"为什么不能继续这个叙事"的证据。
 
 ## 推荐项目形状
 
@@ -27,15 +29,19 @@
 │   ├── plotting.py
 │   └── provenance.py
 ├── configs/
-│   ├── config.yaml
+│   ├── config.yaml              # 主配置文件（头顶必须说明真源位置）
 │   ├── schema.py
 │   ├── task/
 │   ├── experiment/
 │   ├── debug/
-│   └── hydra/
+│   ├── hydra/
+│   └── truth/
+│       ├── config.yaml          # 默认配置副本（真源，一般不修改）
+│       └── config_truth.md      # 配置内容说明文档
 ├── scripts/
 │   ├── index.md
 │   ├── common/
+│   │   └── runs.py              # run registry CLI（定位/比较/晋升/失效 run 的唯一入口）
 │   ├── remote/
 │   └── <task-slot>/
 ├── tests/
@@ -43,8 +49,10 @@
 │   ├── common/
 │   └── <task-slot>/
 ├── outputs/
-│   ├── index.md
+│   ├── index.md                 # runs.py render 生成，禁止手改
 │   └── <task-slot>/
+│       ├── runs.jsonl           # run 注册表（真源，append-only）
+│       ├── index.md             # 生成视图
 │       └── <YYYY-MM-DD>/
 ├── data/
 │   └── processed/
@@ -75,6 +83,13 @@
 - `guides/`：实际任务开始前、重计算前、bug 复盘、停止/继续决策、spec 更新的操作清单。
 
 ## Quick Navigation by Research Task
+
+**BEFORE ANYTHING ELSE** - Read config truth:
+
+- Read [experiment-runtime/config-source-of-truth.md](./experiment-runtime/config-source-of-truth.md) - **这是最重要的**
+- 确保 `configs/truth/config.yaml` 存在且是真源
+- 确保 `configs/truth/config_truth.md` 存在且内容正确
+- **每次实验前必须验证配置**
 
 Starting or adapting a project?
 
@@ -120,13 +135,21 @@ Changing math, loss, reward, or objective code?
 
 Launching a formal run?
 
+- Read [experiment-runtime/config-source-of-truth.md](./experiment-runtime/config-source-of-truth.md) - **配置真源系统**
 - Read [experiment-runtime/hydra-configuration.md](./experiment-runtime/hydra-configuration.md).
 - Read [experiment-runtime/provenance.md](./experiment-runtime/provenance.md).
 - Read [experiment-runtime/logging.md](./experiment-runtime/logging.md).
 - Read [project-structure/outputs-organization.md](./project-structure/outputs-organization.md).
 
+Locating, comparing, citing, or invalidating past runs?
+
+- Read [experiment-runtime/run-registry.md](./experiment-runtime/run-registry.md).
+- Use `runs.py latest|list|show|compare|promote|invalidate`; cite runs by `<task-slot>#<seq>` id.
+- Do not walk `outputs/` directories or write one-off aggregation scripts.
+
 Before heavy compute?
 
+- Read [experiment-runtime/config-source-of-truth.md](./experiment-runtime/config-source-of-truth.md) - **配置真源系统**
 - Read [experiment-runtime/smoke-dry-run.md](./experiment-runtime/smoke-dry-run.md).
 - Read [guides/before-heavy-run-checklist.md](./guides/before-heavy-run-checklist.md).
 - Read [agent-collaboration/pre-heavy-run-review.md](./agent-collaboration/pre-heavy-run-review.md).
@@ -165,7 +188,7 @@ Handling failed or invalidated results?
 - Read [agent-collaboration/claims-and-decisions.md](./agent-collaboration/claims-and-decisions.md).
 - Read [guides/research-stop-continue-decision.md](./guides/research-stop-continue-decision.md).
 - Read [research-pitfalls/route-value-drift.md](./research-pitfalls/route-value-drift.md) before turning a No-Go into a more complex repair route.
-- Update invalidated results and source-of-truth records.
+- Mark runs with `runs.py invalidate` and update invalidated results and source-of-truth records.
 
 After fixing a bug?
 

@@ -83,4 +83,4 @@ Copy or persist:
 - metrics;
 - failure status.
 
-If a remote run cannot capture provenance, it is exploratory only.
+Register copied runs in the launching repo's registry: launch through a wrapper that registers (`runs.py wrap` style), or run `runs.py backfill <task-slot>` after copying outputs back. If a remote run cannot capture provenance, it is exploratory only. See [run-registry.md](./run-registry.md).

@@ -45,8 +45,8 @@ Adding experiment scripts?
 Creating or cleaning outputs?
 
 - Read [outputs-organization.md](./outputs-organization.md).
-- Use `outputs/<task-slot>/<YYYY-MM-DD>/<run-id>/` for formal runs.
-- Mark invalidated outputs in both output index and research ledger.
+- Use `outputs/<task-slot>/<YYYY-MM-DD>/<run-id>/` for formal runs; runs register automatically in `runs.jsonl`.
+- Locate/compare runs with `runs.py latest|list|compare`; invalidate with `runs.py invalidate` plus a research ledger entry.
 
 Cleaning old code?
 

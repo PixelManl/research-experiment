@@ -25,7 +25,7 @@
 
 1. 读 `docs/research-log/source-of-truth.md`——昨日叙事中的事实是否有记录？
 2. 读 `docs/research-log/invalidated-results.md`——有无相关结果已失效但人类未提及？
-3. 读 `outputs/<task-slot>/index.md`——产出状态与人类描述是否一致？
+3. 跑 `python scripts/common/runs.py list <task-slot> --since <昨日>` 和 `runs.py latest <task-slot>`——产出状态与人类描述是否一致？canonical 是否空缺？
 4. 读 `tests/<task-slot>/index.md`——测试结果是否支持人类的判断？
 5. 如有差异，明确列出：**"你说的 X，文件显示的是 Y"**，不得沉默接受。
 
@@ -54,7 +54,7 @@
 ### 链接
 - source-of-truth related entry: `docs/research-log/source-of-truth.md`
 - invalidated-results check: `docs/research-log/invalidated-results.md`
-- related outputs: `outputs/<task-slot>/index.md`
+- related runs: registry ids, e.g. `ppo-handwritten#0007`（`runs.py show` 可溯源）
 - related tests: `tests/<task-slot>/index.md`
 ```
 
@@ -67,7 +67,7 @@
 
 | 人类说 | 文件显示 | 来源 |
 |---|---|---|
-| baseline 已稳定 | outputs/ppo-handwritten/index.md 状态为 paused | outputs index |
+| baseline 已稳定 | `runs.py latest ppo-handwritten` 显示 canonical VACANT | run registry |
 | 昨天测试全过 | tests/ppo-handwritten/ 有 2 个 FAIL | test index |
 ```
 

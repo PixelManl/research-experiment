@@ -48,8 +48,10 @@ Owner: Karen
 ```markdown
 | Date | Task slot | Runs affected | Reason | Replacement |
 |---|---|---|---|---|
-| 2026-05-20 | ppo-handwritten | before 2026-05-20 | reward bug | pending |
+| 2026-05-20 | ppo-handwritten | `ppo-handwritten#0001`..`#0005` | reward bug | pending |
 ```
+
+Cite registry run ids. Mark the runs themselves with `runs.py invalidate <id> --reason ... --by ...` so `runs.py check` can catch any later citation of them.
 
 ## Agent duty
 
@@ -57,7 +59,7 @@ Before citing any old result, AI must check:
 
 - `source-of-truth.md`;
 - `invalidated-results.md`;
-- `outputs/<task-slot>/index.md`;
+- `runs.py show <id>` — the run's current validity in the registry;
 - baseline ledger.
 
 ## Forbidden

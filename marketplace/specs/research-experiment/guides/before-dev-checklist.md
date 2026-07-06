@@ -21,8 +21,9 @@ Check or create:
 
 - `tests/<task-slot>/index.md`
 - `scripts/<task-slot>/index.md`
-- `outputs/<task-slot>/index.md`
 - `docs/research-log/tasks/<task-slot>.md`
+
+`outputs/<task-slot>/runs.jsonl` and `outputs/<task-slot>/index.md` are created by the first registered run (or `runs.py render`); do not hand-create them.
 
 ## 2. Classify ownership
 
@@ -73,3 +74,4 @@ Check:
 - `docs/research-log/source-of-truth.md`
 - `docs/research-log/invalidated-results.md`
 - `docs/research-log/baselines.md`
+- `python scripts/common/runs.py latest <task-slot>` — is the canonical run what the narrative assumes?

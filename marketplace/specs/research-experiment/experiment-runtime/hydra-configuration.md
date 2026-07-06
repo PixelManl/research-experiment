@@ -1,5 +1,7 @@
 # Hydra Configuration Contract
 
+**WARNING**: Configuration drift is a SILENT RESEARCH KILLER. Read [config-source-of-truth.md](./config-source-of-truth.md) FIRST.
+
 Hydra is the experiment control plane. Do not grow a 60-argument `argparse` interface.
 
 ## When to Read
@@ -11,11 +13,27 @@ Read this before:
 - adapting legacy argparse interfaces;
 - deciding whether a run should be controlled by config or command-line flags.
 
+## CRITICAL: Config Source of Truth
+
+**BEFORE** reading anything else, read [config-source-of-truth.md](./config-source-of-truth.md).
+
+The most common failure mode in research experiments is **CONFIG DRIFT**:
+- Paper says: "only actor enabled"
+- Original code: "critic + actor enabled"
+- Agent runs: "critic + actor enabled" (copying code, not paper)
+- Result: WRONG baseline comparison, ALL downstream results INVALIDATED
+
+**SOLUTION**: YAML 就是 truth 的表征，直接读取 yaml 就可以验证配置。
+1. `configs/truth/config.yaml` - 默认配置副本（真源，一般不修改）
+2. `configs/truth/config_truth.md` - 配置内容说明文档（用于协商核对参数）
+
+**GOLDEN RULE**: IF config doesn't match `configs/truth/config.yaml` AND human hasn't explicitly approved the change THEN DON'T RUN THE EXPERIMENT.
+
 ## Required config shape
 
 ```text
 configs/
-├── config.yaml
+├── config.yaml              # 主配置文件（头顶必须说明真源位置）
 ├── schema.py
 ├── task/
 │   └── <task-slot>.yaml
@@ -25,8 +43,11 @@ configs/
 │   ├── off.yaml
 │   ├── dry_run.yaml
 │   └── smoke.yaml
-└── hydra/
-    └── default.yaml
+├── hydra/
+│   └── default.yaml
+└── truth/
+    ├── config.yaml          # 默认配置副本（真源，一般不修改）
+    └── config_truth.md      # 配置内容说明文档
 ```
 
 ## Canonical `configs/config.yaml`

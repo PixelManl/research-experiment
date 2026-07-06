@@ -18,14 +18,16 @@ Use this guide before:
 
 ## Required evidence
 
+- [ ] **配置验证** - 对比 `configs/truth/config.yaml` 验证当前配置
 - [ ] `pytest tests/<task-slot> -q` passes.
 - [ ] `python scripts/<task-slot>/run.py debug=smoke` passes.
+- [ ] `python scripts/common/runs.py check <task-slot>` passes (registry invariants, no stale citations).
 - [ ] Hydra config is composed and saved.
-- [ ] Output directory is unique.
-- [ ] `git.diff.patch` will be saved.
+- [ ] Output directory is unique (registry allocation guarantees this).
+- [ ] Git snapshot will be captured automatically by `tracked_run` (heavy paths gitignored).
 - [ ] `run.log` will capture stdout/stderr.
 - [ ] Baseline ledger checked.
-- [ ] Invalidated-results ledger checked.
+- [ ] Invalidated-results ledger checked; `runs.py latest <task-slot>` canonical is what you think it is.
 - [ ] Reviewer objections checked.
 - [ ] Human approved T2/T3 decisions.
 
@@ -63,6 +65,8 @@ Before launching the run:
 
 ## Related Specs
 
+- [../experiment-runtime/config-source-of-truth.md](../experiment-runtime/config-source-of-truth.md) - **配置真源系统**
+- [../experiment-runtime/run-registry.md](../experiment-runtime/run-registry.md)
 - [../experiment-runtime/provenance.md](../experiment-runtime/provenance.md)
 - [../experiment-runtime/smoke-dry-run.md](../experiment-runtime/smoke-dry-run.md)
 - [../experiment-runtime/remote-concurrency.md](../experiment-runtime/remote-concurrency.md)
