@@ -43,17 +43,18 @@ configs/task/<task-slot>.yaml   # 推荐：配置也按 slot 拆
 - run 废弃 → 依赖它的 data 删或标废弃。  
 - 链路 A→B→C→D 中 B 错 → B 及下游皆废。
 
-### 「当前」= 证据齐全（与 run-evidence 一致）
+### 「当前」= 仅约束 runs（与 run-evidence 一致）
 
-- 每 slot 至多一个 **当前**。  
-- 可引用 = 当前 + [run-evidence.md](./run-evidence.md) 最少集。  
+- **`runs/<slot>/index.md`：每 slot 至多一个「当前」**（结论叙事主线）。  
+- **data 可以有多条「在用/当前」**，只要各自源 run 未废；不要把「一个当前」套到 data 上。  
+- 可引用结论 = runs 的 **当前** + [run-evidence.md](./run-evidence.md) **最少集**。  
 - 废弃须写 **原因**（归因）。  
 - 禁止按日期猜最新。
 
 ```markdown
 | 状态 | 路径 | 原因 |
 |------|------|------|
-| **当前** | 2026-07-02/091412-fixed | 证据齐 |
+| **当前** | 2026-07-02/091412-fixed | 最少集齐 |
 | 废弃 | 2026-07-01/103000-bug | clip 错；勿引用 |
 ```
 
@@ -68,7 +69,10 @@ Slot 不变；`runs|scripts/.../<YYYY-MM-DD>/`；slot 级 index 汇总当前/废
 - data：路径、源 run、状态  
 - tests：见 tests.md  
 
-## Agent
+## Agent 禁令
 
-- 新脚本/run/data/tests → 进对应 slot 并更新 index。  
-- 标当前前检查证据包。
+- 禁止根目录堆脚本/测试。  
+- 禁止按日期猜「最新 run」当正确。  
+- 禁止 runs 无最少集却标当前；禁止废弃不写原因。  
+- 禁止把 data 多条在用误判为违规（「一个当前」只限 **runs**）。  
+- 新脚本/run/data/tests → 进对应 slot 并更新 index。

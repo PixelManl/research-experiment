@@ -6,8 +6,8 @@
 
 1. **Slot 组织** — scripts / runs / data / tests 同名；configs 推荐 `task/<slot>.yaml`。  
 2. **main / plan / paper** — 1:1 实现；跑前只核 **短 baseline 表**，不重读整本 plan。  
-3. **Hydra** — 正式入口必须；**yaml > arg**；arg 独立文件，default 与 yaml 一致。  
-4. **Run 证据** — 跑前 git；目录含 commit/dirty+patch、`.hydra` 配置、command、seed；废弃写原因。  
+3. **Hydra** — 正式入口必须；**yaml > arg**；default 只来自 yaml（代码勿手写第二套）。  
+4. **Run 证据** — 最少集齐才可标 **runs 当前**（data 可多条在用）；废弃写原因；dirty 必有 patch。  
 5. **algorithm / mc / diag / utils** — 干净算法 + fail-closed。  
 6. **test 可 mock；smoke 真路径**。  
 7. **Route-value** — 做完 ≠ 有价值。

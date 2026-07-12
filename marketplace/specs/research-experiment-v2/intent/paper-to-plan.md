@@ -30,10 +30,12 @@
 
 原文：`docs/plan/modules/<module>/PAPER.md`（§x.x）
 
-| 项 | Paper | ori（若已知） | 我们采用 | 备注 |
-|----|-------|---------------|----------|------|
-| clip ε | 0.2 | 0.1 | 0.2 | 跟 paper；写入 yaml |
-| entropy | 有 bonus | 无 | 有 | 与 clip 同属一组组件 |
+| key | paper | ori | we use | why |
+|-----|-------|-----|--------|-----|
+| clip.eps | 0.2 | 0.1 | 0.2 | 跟 paper；写入 yaml |
+| entropy | on | off | on | 与 clip 同组件组 |
+
+> 超参权威表只维护一处（本 plan 表 **或** `configs/baseline.md`，见 [config-baseline.md](./config-baseline.md)），禁止两处各写一套 we use。
 
 ## 公式 ↔ 代码（数学相关时）
 

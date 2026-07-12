@@ -11,10 +11,10 @@
 
 ## 3. 结果链 + 证据
 
-- 新 run 在 `runs/<slot>/<日期>/...`，**证据齐全**（git、配置、command、seed）。  
-- `index.md`：旧 → **废弃 + 原因**；新 → **当前**（仅证据齐时）。  
-- data 下游按废弃链清理。  
-- **图与结论只引当前**；禁止「见某日期文件夹」。
+- 新 run 在 `runs/<slot>/<日期>/...`，**最少集齐全**（见 [../organize/run-evidence.md](../organize/run-evidence.md)：git、dirty+patch、`.hydra`、command、seed）。  
+- `runs/.../index.md`：旧 → **废弃 + 原因**；新 → **当前**（仅最少集齐；**每 slot 至多一个当前**）。  
+- data 可多条在用；源 run 废弃则下游清理。  
+- **图与结论只引 runs 的当前**；禁止「见某日期文件夹」。
 
 ## 4. 声明语言（短）
 

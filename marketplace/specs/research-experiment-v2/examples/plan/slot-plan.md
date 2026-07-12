@@ -11,12 +11,18 @@
 
 - 模块 policy-surrogate：`docs/plan/modules/policy-surrogate/PAPER.md`（§3.2 摘录）
 
-## Paper 抽取
+## Paper 抽取（本 slot 唯一超参权威表；勿再写 baseline.md 第二套）
 
-| 项 | Paper | ori | 我们采用 | 备注 |
-|----|-------|-----|----------|------|
-| clip ε | 0.2 | 0.1 | 0.2 | 跟 paper，不跟 ori |
-| entropy bonus | 有 | 无 | 有 | 与 clip 同组件组 |
+| key | paper | ori | we use | why |
+|-----|-------|-----|--------|-----|
+| clip.eps | 0.2 | 0.1 | 0.2 | 跟 paper |
+| entropy | on | off | on | 与 clip 同组 |
+
+## 公式 ↔ 代码
+
+| Eq/节 | 代码 path:fn | 测试 |
+|-------|--------------|------|
+| §3.2 clip | src/pkg/algorithm/clip.py:ratio_clip | tests/ppo-baseline/test_clip.py |
 
 ## 实现清单
 
@@ -26,5 +32,6 @@
 
 ## 组件组
 
-见 `docs/plan/modules/policy-surrogate/COMPONENTS.md`（或 examples/linkage 样例）
+见 examples/linkage/COMPONENTS.md 形状
 ```
+

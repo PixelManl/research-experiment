@@ -27,8 +27,10 @@
 
 ## 刻意不再堆进 v2 的（避免再次复杂）
 
-- 双轴 claim-ready 仪式、T1/T2/T3 长文、heavy-model 外审包、全量 Hydra 专章。  
-需要时从 git 历史 v1 取参考，不恢复为默认心智负担。
+- **不**恢复：双轴 claim-ready 状态机、T1/T2/T3 **长文**、heavy-model 外审包、全量 Hydra **百科专章**。  
+- **仍保留（短）**：`guides/before-work.md` 的 T1/T2/T3 短表；`guides/after-change.md` 的 observation→claim 短表。  
+- **仍强制**：正式入口用 **Hydra**（见 organize/config-entry）——「不堆专章」≠「不要 Hydra」。  
+需要更长 v1 原文时查 git 历史，不灌回默认心智。
 
 ## 决策口诀
 
