@@ -5,7 +5,7 @@
       "id": "research-experiment-v2",
       "type": "spec",
       "name": "Research Experiment v2",
-      "description": "Slim research specs: task-slot organize (scripts/runs/data), docs/main+plan with paper.md, component linkage, simple current/dead runs.",
+      "description": "Slim research specs: task-slot organize (scripts/runs/data), docs/main+plan with paper.md, component linkage, algorithm/metric/diag/utils split, simple current/dead runs.",
       "path": "marketplace/specs/research-experiment-v2",
       "tags": [
         "research",

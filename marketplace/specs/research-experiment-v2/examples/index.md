@@ -12,6 +12,7 @@
 | [indexes/data-index.md](./indexes/data-index.md) | data 软链 run、下游废弃 | 提取数据、清脏链路时 |
 | [plan/slot-plan.md](./plan/slot-plan.md) | plan + paper 抽取表骨架 | 写 docs/plan 时 |
 | [linkage/COMPONENTS.md](./linkage/COMPONENTS.md) | 组件组表样例 | 改 clip/entropy 等时 |
+| [code/call-shape.md](./code/call-shape.md) | algorithm→mc/diag/utils 调用形状 | 写包内分层时 |
 
 ## Pre-Development Checklist
 

@@ -15,7 +15,8 @@
 
 4. **若改核心逻辑**  
    - 打开 [../linkage/coupled-changes.md](../linkage/coupled-changes.md)，标组件组。  
-   - 有 Grep/MCP 则搜调用点，补进清单。
+   - 有 Grep/MCP 则搜调用点，补进清单。  
+   - 分层：algorithm 只动算法；指标/诊断/安全算子见 [../code/algorithm-split.md](../code/algorithm-split.md)。
 
 5. **若会重算**  
    - 想好旧 run 如何标废弃；data 是否依赖旧 run。

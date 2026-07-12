@@ -8,7 +8,8 @@
 1. **组织** — `<task-slot>` 对齐 `scripts` / `runs` / `data`，短 `index.md`；跨天用日期子目录。  
 2. **意图** — `docs/main` 要什么；`docs/plan` 怎么做；模块旁 **paper 原文 .md** → 抽取 → **1:1 实现**。  
 3. **链路** — 组件组联动（如 hard-clip + entropy）；Grep/MCP 可选。  
-4. **真源表** — 查 main / plan / 三级 index；**runs ≠ data**，data 软链 run，错误链路从坏点下游清理。
+4. **真源表** — 查 main / plan / 三级 index；**runs ≠ data**，data 软链 run，错误链路从坏点下游清理。  
+5. **代码分层** — **algorithm 干净**；`metric`/`mc.xx` 统计；`diag.xx` 诊断；**utils** 安全算子替换（除法 eps 等），不堆进算法正文。
 
 ## 安装（务必带 `/marketplace`）
 
