@@ -81,6 +81,15 @@
 - `research-pitfalls/`：高频失配、失效模式、反复踩坑点，以及对应的 CI 触发规则。
 - `agent-collaboration/`：T1/T2/T3 ownership、reviewer objections、失败证据、重计算前检查。
 - `guides/`：实际任务开始前、重计算前、bug 复盘、停止/继续决策、spec 更新的操作清单。
+- `examples/`：可选参考资产（bootstrap、示例 index、run-registry 样例）；**不是** coding contract。
+
+每个正式层的 `index.md` 使用 Trellis skill 约定的三节结构：
+
+1. **Guidelines Index** — 文件表（path + reason）
+2. **Pre-Development Checklist** — `before-dev` 动手前门禁
+3. **Quality Check** — `check` 验收项
+
+CLI 只扫描层目录并列出 `index.md` 路径，不硬解析章节标题；章节名是官方 skill/prompt 软约束，为可靠触发而统一采用。
 
 ## Quick Navigation by Research Task
 

@@ -1,58 +1,42 @@
 # Guides Index
 
-Guides are operational checklists, not deep code contracts. Keep them short, executable, and easy to copy into a task or review note.
+Operational checklists, not deep code contracts. Keep them short, executable,
+and easy to copy into a task or review note.
 
-## Documentation Files
+> Trellis treats `guides/` as shared thinking guides (always listed separately
+> from coding layers). Content style: what to consider, not full implementation
+> contracts.
 
-| File | Purpose | When to Read | Priority |
-|---|---|---|---|
-| [before-dev-checklist.md](./before-dev-checklist.md) | Pre-development task setup | Before implementing a new task-slot or substantial change | Must Read |
-| [before-heavy-run-checklist.md](./before-heavy-run-checklist.md) | Evidence required before expensive compute | Before heavy runs, sweeps, remote jobs, or long training | Must Read |
-| [bug-root-cause-retrospective.md](./bug-root-cause-retrospective.md) | Bug classification and prevention follow-up | After fixing a bug or invalidating a result | Must Read |
-| [research-stop-continue-decision.md](./research-stop-continue-decision.md) | Stop, continue, or reframe decisions | When evidence is weak, contradictory, costly, or invalidated | Must Read |
-| [spec-update-guide.md](./spec-update-guide.md) | Updating project specs from lessons learned | When a repeated bug, new convention, or project-specific rule appears | Conditional |
-| [main-journal-protocol.md](./main-journal-protocol.md) | Daily research journal protocol | At the end of a research session or before handoff | Conditional |
+## Guidelines Index
 
-## Quick Navigation by Task
+| Guide | Description | When to Read |
+|-------|-------------|--------------|
+| [before-dev-checklist.md](./before-dev-checklist.md) | Pre-development task setup | Before a new task-slot or substantial change |
+| [before-heavy-run-checklist.md](./before-heavy-run-checklist.md) | Evidence required before expensive compute | Heavy runs, sweeps, remote jobs, long training |
+| [bug-root-cause-retrospective.md](./bug-root-cause-retrospective.md) | Bug classification and prevention follow-up | After fixing a bug or invalidating a result |
+| [research-stop-continue-decision.md](./research-stop-continue-decision.md) | Stop, continue, or reframe decisions | Weak, contradictory, costly, or invalidated evidence |
+| [spec-update-guide.md](./spec-update-guide.md) | Updating project specs from lessons learned | Repeated bugs, new conventions, project-specific rules |
+| [main-journal-protocol.md](./main-journal-protocol.md) | Daily research journal protocol | End of research session or handoff |
 
-When a change may be locally correct but globally inconsistent?
+## Pre-Development Checklist
 
-- Read [../research-pitfalls/coupled-logic-drift.md](../research-pitfalls/coupled-logic-drift.md).
-- Trace dependent objectives, entropy terms, metrics, diagnostics, baselines, and reports before accepting the change.
+- [ ] Before development → [before-dev-checklist.md](./before-dev-checklist.md):
+      task-slot, ownership tier, scientific contract, minimum tests, commands, stale-source risks.
+- [ ] Before heavy compute → [before-heavy-run-checklist.md](./before-heavy-run-checklist.md)
+      plus runtime provenance and agent pre-heavy-run review.
+- [ ] Locally correct but possibly globally inconsistent change → also read
+      [../research-pitfalls/coupled-logic-drift.md](../research-pitfalls/coupled-logic-drift.md).
+- [ ] Weak/contradictory evidence → [research-stop-continue-decision.md](./research-stop-continue-decision.md);
+      leave T3 stop/continue to the human owner.
+- [ ] End of research day → [main-journal-protocol.md](./main-journal-protocol.md).
+- [ ] Guides stay short and point to source files/evidence; do not summarize chat only.
 
-Before starting development?
+## Quality Check
 
-- Read [before-dev-checklist.md](./before-dev-checklist.md).
-- Confirm task-slot, ownership tier, scientific contract, minimum tests, commands, and stale-source risks.
-
-Before launching heavy compute?
-
-- Read [before-heavy-run-checklist.md](./before-heavy-run-checklist.md), [../experiment-runtime/provenance.md](../experiment-runtime/provenance.md), and [../agent-collaboration/pre-heavy-run-review.md](../agent-collaboration/pre-heavy-run-review.md).
-- Confirm smoke evidence, config/provenance, review, expected cost, and stop criteria.
-
-After fixing a bug?
-
-- Read [bug-root-cause-retrospective.md](./bug-root-cause-retrospective.md).
-- Classify the bug and add prevention where it belongs: test, validation, spec, checklist, or CI.
-
-When evidence is weak or contradictory?
-
-- Read [research-stop-continue-decision.md](./research-stop-continue-decision.md).
-- Compare evidence, counter-evidence, compute cost, and the smallest next diagnostic.
-- Leave T3 stop/continue decisions to the human owner.
-
-When project conventions change?
-
-- Read [spec-update-guide.md](./spec-update-guide.md).
-- Update the smallest relevant spec file instead of relying on chat memory.
-
-At the end of a research day?
-
-- Read [main-journal-protocol.md](./main-journal-protocol.md).
-- Record what changed, what failed, what is invalid, and what decision is pending.
-
-## Core Rules Summary
-
-- A guide should be short enough to use during real work.
-- Guides should point to source files and evidence, not summarize chat history.
-- When a lesson repeats, update the spec or checklist so the next agent can inherit it.
+- [ ] After a bug: retrospective done and prevention landed in the right place
+      (test / validation / spec / checklist / CI) via
+      [bug-root-cause-retrospective.md](./bug-root-cause-retrospective.md).
+- [ ] Repeated lessons updated the smallest relevant spec file
+      ([spec-update-guide.md](./spec-update-guide.md)), not only chat memory.
+- [ ] Journal/handoff records what changed, failed, is invalid, and is still pending.
+- [ ] Guides did not absorb long coding contracts that belong in non-guide layers.
