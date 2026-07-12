@@ -1,19 +1,19 @@
 # Guides Index
 
-短操作清单：开干前、改完后。
-
 ## Guidelines Index
 
 | Guide | Description | When to Read |
 |-------|-------------|--------------|
-| [before-work.md](./before-work.md) | 开干前：slot、main/plan、paper、组织 | 新任务或实质性改动前 |
-| [after-change.md](./after-change.md) | 改完/修 bug：联动、废弃旧 run/data | 实现后、修 bug 后、重算后 |
+| [before-work.md](./before-work.md) | 开干：slot、轻量配置门、git、smoke、ownership | 新任务 / 正式跑前 |
+| [after-change.md](./after-change.md) | 改完：证据、废弃原因、claim、防复发 | 实现后 / 修 bug 后 |
+| [route-value.md](./route-value.md) | 做完≠有价值 | 开下一阶段 / 加工程前 |
 
 ## Pre-Development Checklist
 
-- [ ] 读 [before-work.md](./before-work.md) 并逐项过一遍。
+- [ ] 读 before-work 并过清单。  
+- [ ] 开新阶段时读 route-value。
 
 ## Quality Check
 
-- [ ] 改动收尾时读 [after-change.md](./after-change.md)。
-- [ ] guides 保持短，细节链回 organize / intent / linkage。
+- [ ] after-change 收尾；当前 run 证据齐。  
+- [ ] guides 保持短，细节回 organize / intent / code。

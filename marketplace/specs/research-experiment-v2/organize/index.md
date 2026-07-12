@@ -1,24 +1,26 @@
 # Organize Index
 
-按 `<task-slot>` 组织脚本、runs、data。不强制重审计；**必须组织好**。
+按 `<task-slot>` 组织脚本、runs、data、tests、配置；run 必须带证据包。
 
 ## Guidelines Index
 
 | Guide | Description | When to Read |
 |-------|-------------|--------------|
-| [task-slots.md](./task-slots.md) | slot 命名；scripts/runs/data；跨天；index 规则；runs≠data | 新建任务、加脚本、落盘数据/结果 |
+| [task-slots.md](./task-slots.md) | slot；scripts/runs/data；跨天；当前/废弃 | 新建任务、落盘 |
+| [run-evidence.md](./run-evidence.md) | git 处理；证据最少集；Hydra 配置落盘 | **每次正式 run 前/后** |
+| [config-entry.md](./config-entry.md) | Hydra；yaml>arg；slot 化 configs；smoke | 加入口、改配置结构 |
+| [tests.md](./tests.md) | tests 按 slot；mock vs smoke | 加测试、改算法前 |
 
 ## Pre-Development Checklist
 
-- [ ] 已有稳定 `<task-slot>`（无日期当 slot 名）。
-- [ ] 将使用的路径落在 `scripts|runs|data/<task-slot>/`，不是仓库根。
-- [ ] 会更新对应 `index.md`（重要脚本 / 当前 run / data 来源）。
-- [ ] 分清本次产物是 **run 证据** 还是 **可复用 data**（见 task-slots）。
-- [ ] 多日任务：slot 不变，其下按日期分子目录，由 slot 级 index 汇总。
+- [ ] 稳定 `<task-slot>`；路径在 `scripts|runs|data|tests/<slot>/`。  
+- [ ] 正式跑：已读 [run-evidence.md](./run-evidence.md)，git 状态可说明。  
+- [ ] 配置走 Hydra；defaults 在 yaml；见 [config-entry.md](./config-entry.md)。  
+- [ ] 将跑配置相对 baseline 表无静默 ori 冲突；见 [../intent/config-baseline.md](../intent/config-baseline.md)。  
+- [ ] 分清 run 证据 vs 可复用 data。
 
 ## Quality Check
 
-- [ ] 无根目录一次性脚本堆。
-- [ ] `runs/<slot>/index.md` 标明 **当前**（至多一个叙事主线）与 **废弃**。
-- [ ] `data/<slot>/index.md` 标明 **来自哪个 run**；废弃 run 的下游 data 已删或已标废弃。
-- [ ] index 保持一屏内：链接 + 一句说明，不写长文。
+- [ ] 「当前」run 证据齐全（commit/dirty+patch/配置/command/seed）。  
+- [ ] 废弃条有原因；data 下游已清理。  
+- [ ] 无根目录脚本/测试垃圾堆。

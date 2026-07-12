@@ -32,14 +32,24 @@
 
 | 项 | Paper | ori（若已知） | 我们采用 | 备注 |
 |----|-------|---------------|----------|------|
-| clip ε | 0.2 | 0.1 | 0.2 | 跟 paper |
+| clip ε | 0.2 | 0.1 | 0.2 | 跟 paper；写入 yaml |
 | entropy | 有 bonus | 无 | 有 | 与 clip 同属一组组件 |
+
+## 公式 ↔ 代码（数学相关时）
+
+| Eq/节 | 代码 path:fn | 测试 |
+|-------|--------------|------|
+| §3.2 clip | src/.../clip.py:ratio_clip | tests/<slot>/test_clip.py |
+
+不确定 → 写「开放风险」，禁止当已解决。
 
 ## 实现清单
 
 - [ ] `src/.../clip.py` — 与 PAPER §x 一致
 - [ ] `src/.../entropy.py` — 同组联动
 ```
+
+超参门禁与跑前轻量核对见 [config-baseline.md](./config-baseline.md)（**不必**每次开跑重读整本 plan）。
 
 ## 做不到「自动从 PDF 完美抽取」时
 

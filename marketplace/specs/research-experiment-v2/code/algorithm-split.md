@@ -42,7 +42,9 @@ src/<package>/
 mc.xxx(...)     # 或 metric.xxx(...)
 ```
 
-- metric 模块：**输入中间产物 → 输出可记录的标量/表**；不拥有训练步进，不写算法状态机。
+- metric 模块：**输入中间产物 → 输出可记录的标量/表**；不拥有训练步进，不写算法状态机。  
+- **门控**：metric **尽量纯**；**禁止**在 metric 里选 runs 目录、写 status、做 Hydra 入口。  
+- IO 与落盘由 **script** 负责。
 
 ## 3. diag — 诊断与 metric 同构
 
@@ -53,12 +55,13 @@ mc.xxx(...)     # 或 metric.xxx(...)
 diag.xxx(...)
 ```
 
-- 输入具体内容（batch、logits、mask、中间产物）→ 计算诊断结果。
-- 昂贵诊断由 script/config 开关，默认不污染主路径。
+- 输入具体内容（batch、logits、mask、中间产物）→ 计算诊断结果。  
+- **门控**：默认关或 `debug`/配置打开；昂贵探针不进主训练路径。  
+- 同样禁止 diag 充当 run 入口或私自写「成功」状态。
 
-## 4. utils — 安全算子，替换式使用
+## 4. utils — 安全算子 + fail-closed
 
-任何 **torch 上有 0 梯度 / NaN / 除零风险** 的计算，从 utils 取安全实现，**替换** algorithm 中的裸写法，而不是让 algorithm 正文堆满防护噪音。
+任何 **torch 上有 0 梯度 / NaN / 除零风险** 的计算，从 utils 取安全实现，**替换** algorithm 中的裸写法。
 
 | 场景 | 不要 | 要 |
 |------|------|-----|
@@ -68,9 +71,20 @@ diag.xxx(...)
 
 原则：
 
-- **算法可读性优先**：主公式仍像公式；安全细节在 utils。
-- **替换不是拦截**：不是包一层「禁止 algorithm 做除法」，而是统一安全原语，algorithm 直接换调用。
-- 新安全原语加在 utils，并尽量有单测；algorithm 禁止再复制一份 eps 逻辑。
+- **算法可读性优先**：主公式仍像公式；安全细节在 utils。  
+- **替换不是拦截**：统一安全原语，algorithm 直接换调用。  
+- 新原语进 utils 并尽量有单测。
+
+### Fail-closed（与安全 utils 一致）
+
+- 出现 NaN/Inf 或不可恢复数值问题 → **停止**，`status=failed`，**保留** run 目录与日志，补回归测试。  
+- **禁止**用 `nan_to_num` 等**无记录**方式遮掩后继续当 success。  
+- 顶层可 `try/except` **仅用于**写 failed 再 **re-raise**；禁止吞掉异常仍写成功指标。
+
+## 5. 校验
+
+- 前置条件（shape、必填字段）失败应尽早炸。  
+- 核心路径中间产物优先 **dataclass / NamedTuple**，避免裸 dict 传 batch/loss 包（可逐步采纳）。
 
 ## 调用关系（示意）
 

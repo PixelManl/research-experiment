@@ -36,8 +36,11 @@
 这段是主算法吗？     → algorithm
 是要记的数吗？       → metric (mc.xx)
 是要查的健康/探针吗？ → diag (diag.xx)
-是数值安全/通用小工具？ → utils 替换调用
-是某次跑的证据吗？   → runs
+是数值安全/通用小工具？ → utils 替换 + fail-closed
+是某次跑的证据吗？   → runs（证据包）
 是提取后的可复用材料？ → data（链到 run）
 是我们要什么/怎么做？ → docs/main · docs/plan
+配置默认从哪来？     → yaml（Hydra）；arg 仅显式覆盖
+开跑要不要重读 plan？ → 否；只核 baseline 短表
+测试 mock 还是 smoke？ → unit 可 mock；smoke 真路径
 ```

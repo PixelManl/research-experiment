@@ -42,5 +42,7 @@ docs/
 
 ## 配置与 ori
 
-- **采用哪套超参** 写在 plan（来自 paper 原文表），不是「打开 ori 抄 default」。
-- ori 仅作实现参考；与 paper/plan 冲突 → 记入 plan，**默认跟 plan/paper**，跟 ori 必须写理由。
+- **采用哪套超参** 写在 plan 抽取表 / `configs/baseline.md`，并落入 **Hydra yaml**，不是「打开 ori 抄 default」。
+- ori 仅作实现参考；与 paper/plan 冲突 → 记入表，**默认跟 plan/paper**，跟 ori 必须写理由（T2）。
+- 可比 baseline 列表建议在 main 或 plan 维护一小节；**指标或算法语义变了 → 旧对比作废并写明**。
+- 细节：[config-baseline.md](./config-baseline.md)、[../organize/config-entry.md](../organize/config-entry.md)。

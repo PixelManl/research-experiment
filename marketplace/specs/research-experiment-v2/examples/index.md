@@ -13,6 +13,7 @@
 | [plan/slot-plan.md](./plan/slot-plan.md) | plan + paper 抽取表骨架 | 写 docs/plan 时 |
 | [linkage/COMPONENTS.md](./linkage/COMPONENTS.md) | 组件组表样例 | 改 clip/entropy 等时 |
 | [code/call-shape.md](./code/call-shape.md) | algorithm→mc/diag/utils 调用形状 | 写包内分层时 |
+| [runs/run-dir-layout.md](./runs/run-dir-layout.md) | 单次 run 证据文件列表 | 正式跑落盘时 |
 
 ## Pre-Development Checklist
 
