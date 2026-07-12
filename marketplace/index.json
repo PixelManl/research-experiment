@@ -2,18 +2,17 @@
   "version": 1,
   "templates": [
     {
-      "id": "research-experiment",
+      "id": "research-experiment-v2",
       "type": "spec",
-      "name": "Research Experiment",
-      "description": "Trellis specs for research experiments: task-scoped tests/scripts/outputs, Hydra runtime, provenance, numerics, math mapping, research pitfalls, and human-agent collaboration.",
-      "path": "marketplace/specs/research-experiment",
+      "name": "Research Experiment v2",
+      "description": "Slim research specs: task-slot organize (scripts/runs/data), docs/main+plan with paper.md, component linkage, simple current/dead runs.",
+      "path": "marketplace/specs/research-experiment-v2",
       "tags": [
         "research",
         "experiments",
-        "hydra",
-        "pytorch",
-        "rl",
-        "ml"
+        "task-slot",
+        "ml",
+        "rl"
       ]
     }
   ]

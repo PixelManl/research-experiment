@@ -33,7 +33,7 @@ Read the installed project spec first when available:
 - `.trellis/spec/experiment-modules/evaluation-and-baselines.md`
 - `.trellis/spec/agent-collaboration/claims-and-decisions.md`
 
-If the project spec is not installed, read the corresponding template files under `marketplace/specs/research-experiment/`.
+If the project spec is not installed, read the corresponding template files under `marketplace/specs/research-experiment-v2/` (especially `linkage/coupled-changes.md`).
 
 ## Review Workflow
 
