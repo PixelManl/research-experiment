@@ -70,3 +70,5 @@ docs/main/  docs/plan/
 ## 使用
 
 复制到 `.trellis/spec/` 后按仓库改编。
+
+**落盘骨架**：对照 [examples/scaffold/LAYOUT.md](./examples/scaffold/LAYOUT.md) 建目录；Hydra 片段见 [examples/configs/snippets.md](./examples/configs/snippets.md)。examples 均为参考，非第二套合同。

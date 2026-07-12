@@ -24,4 +24,6 @@ trellis init --registry gh:PixelManl/research-experiment/marketplace --template 
 
 `organize` · `intent` · `linkage` · `code` · `guides` · `examples`（非合同）
 
-可选 `marketplace/skills`、`agents` 不由 registry 安装；agent 已指向 v2 路径。
+**脚手架形状在 examples**：装好 spec 后看  
+`.trellis/spec/examples/scaffold/LAYOUT.md` 与 `examples/configs/snippets.md`。  
+可选 `marketplace/skills/scaffolder` 仍可能偏旧布局，以 examples 的 v2 树为准。

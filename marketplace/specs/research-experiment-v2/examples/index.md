@@ -1,26 +1,29 @@
 # Examples Index
 
-**参考示例，不是编码合同。** 安装后路径在 `.trellis/spec/examples/`。  
-照抄前先对照 organize / intent / linkage 正文；示例只演示形状。
+**参考示例，不是编码合同。** 安装后在 `.trellis/spec/examples/`。  
+初始化仓库 → 先看 **scaffold**；细则对照 organize / intent 正文。
 
 ## Guidelines Index
 
 | 示例 | 说明 | 何时看 |
 |------|------|--------|
-| [indexes/scripts-index.md](./indexes/scripts-index.md) | scripts 下 index 样例 | 建 slot 脚本目录时 |
-| [indexes/runs-index.md](./indexes/runs-index.md) | runs 当前/废弃 样例（防 7-01） | 重算、作图引用前 |
-| [indexes/data-index.md](./indexes/data-index.md) | data 软链 run、下游废弃 | 提取数据、清脏链路时 |
-| [plan/slot-plan.md](./plan/slot-plan.md) | plan + paper 抽取表骨架 | 写 docs/plan 时 |
-| [linkage/COMPONENTS.md](./linkage/COMPONENTS.md) | 组件组表样例 | 改 clip/entropy 等时 |
-| [code/call-shape.md](./code/call-shape.md) | algorithm→mc/diag/utils 调用形状 | 写包内分层时 |
-| [runs/run-dir-layout.md](./runs/run-dir-layout.md) | 单次 run 证据文件列表 | 正式跑落盘时 |
+| [scaffold/LAYOUT.md](./scaffold/LAYOUT.md) | **整仓脚手架树** + 初始化顺序 | 空仓库 / 新项目落地 |
+| [configs/snippets.md](./configs/snippets.md) | Hydra / task / smoke / run.dir 片段 | 配 configs 时 |
+| [indexes/scripts-index.md](./indexes/scripts-index.md) | scripts index 样例 | 建 slot 脚本时 |
+| [indexes/runs-index.md](./indexes/runs-index.md) | runs 当前/废弃 | 重算、引用结果 |
+| [indexes/data-index.md](./indexes/data-index.md) | data 软链 run | 提取数据、清链路 |
+| [runs/run-dir-layout.md](./runs/run-dir-layout.md) | 单次 run 证据最少集 / dirty | 正式跑落盘 |
+| [plan/slot-plan.md](./plan/slot-plan.md) | plan + 超参表 + 公式行 | 写 docs/plan |
+| [linkage/COMPONENTS.md](./linkage/COMPONENTS.md) | 组件组 | 改 clip/entropy 等 |
+| [code/call-shape.md](./code/call-shape.md) | algorithm→mc/diag/utils | 写包内分层 |
 
 ## Pre-Development Checklist
 
-- [ ] 确认示例路径不会被写进 `implement.jsonl` 当正式规范。
-- [ ] 复制到项目时改成真实 slot/包名。
+- [ ] 不把 examples 路径写进 `implement.jsonl` 当正式规范。  
+- [ ] 复制时替换 `<package>` / `<task-slot>`。  
+- [ ] 脚手架以 [scaffold/LAYOUT.md](./scaffold/LAYOUT.md) 为准，不要抄 v1 的 `outputs/` / `truth/` 形。
 
 ## Quality Check
 
-- [ ] 项目里的 index **实际文件**已按示例精神维护，而不是只留在 examples/。
-- [ ] 未把 example 里的假路径当真实 runs/data。
+- [ ] 仓库真实目录与 LAYOUT 对齐（或有意删减并写明）。  
+- [ ] index / plan / 证据形状来自 examples，内容已改成项目事实。
